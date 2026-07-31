@@ -253,8 +253,8 @@ function _http_parse_request(i32 client_fd, ptr http_request req) -> i8 {
     if not _http_wait_readable(client_fd); return 0;
 
     i32 n = read(client_fd, ref req.raw, (HTTP_REQUEST_BUFFER_SIZE - 1) as u64) as i32;
-    if n <= 0; return 0;
-    req.raw[n] = 0;
+    if n <= 0; return 0 as i8;
+    req.raw[n] = 0 as i8;
 
     i32 i = 0;
     req.method = ref req.raw;
