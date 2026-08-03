@@ -1,6 +1,6 @@
 #include "technoblade_h.cpl"
 
-glob function technoblade::can_die() -> i8 { 0 }
+glob function technoblade::can_die() -> bool { false }
 
 glob function technoblade::get_summary() -> ptr i8 { ref "Technoblade never dies!" }
 

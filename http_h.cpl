@@ -9,6 +9,7 @@
 #include "fcntl_h.cpl"
 #include "poll_h.cpl"
 #include "signal_h.cpl"
+#include "stdbool_h.cpl"
 
 :/ Tiny blocking HTTP/1.1 server helpers.
 Handler functions are stored as `ptr i0` and must have this shape:
