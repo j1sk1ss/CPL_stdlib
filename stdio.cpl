@@ -2,13 +2,13 @@
 #include "stdlib_h.cpl"
 #include "unistd_h.cpl"
 
-glob function file::init(ptr file self, ptr FILE body, i8 owned) -> i0 {
+glob function file::init(ptr file self, ptr FILE body, bool owned) -> i0 {
     if not self; return;
     self.body  = body;
     self.owned = owned;
 }
 
-glob function file::wrap(ptr FILE body, i8 owned) -> ptr file {
+glob function file::wrap(ptr FILE body, bool owned) -> ptr file {
     if not body; return 0 as ptr file;
 
     ptr file self = malloc(sizeof(file)) as ptr file;
@@ -25,7 +25,7 @@ glob function file::open(ptr i8 path, ptr i8 mode) -> ptr file {
     ptr FILE body = fopen(path, mode);
     if not body; return 0 as ptr file;
 
-    ptr file self = file::wrap(body, 1 as i8);
+    ptr file self = file::wrap(body, true);
     if self; return self;
 
     fclose(body);
@@ -36,7 +36,7 @@ glob function file::temporary() -> ptr file {
     ptr FILE body = tmpfile();
     if not body; return 0 as ptr file;
 
-    ptr file self = file::wrap(body, 1 as i8);
+    ptr file self = file::wrap(body, true);
     if self; return self;
 
     fclose(body);
@@ -53,7 +53,7 @@ glob function file::standard_input() -> ptr file {
         return 0 as ptr file;
     }
 
-    ptr file self = file::wrap(body, 1 as i8);
+    ptr file self = file::wrap(body, true);
     if self; return self;
 
     fclose(body);
@@ -70,7 +70,7 @@ glob function file::standard_output() -> ptr file {
         return 0 as ptr file;
     }
 
-    ptr file self = file::wrap(body, 1 as i8);
+    ptr file self = file::wrap(body, true);
     if self; return self;
 
     fclose(body);
@@ -87,16 +87,16 @@ glob function file::standard_error() -> ptr file {
         return 0 as ptr file;
     }
 
-    ptr file self = file::wrap(body, 1 as i8);
+    ptr file self = file::wrap(body, true);
     if self; return self;
 
     fclose(body);
     0 as ptr file
 }
 
-glob function file::is_open(ptr file self) -> i8 {
-    if self.body; return 1 as i8;
-    0 as i8
+glob function file::is_open(ptr file self) -> bool {
+    if self.body; return true;
+    false
 }
 
 glob function file::raw(ptr file self) -> ptr FILE {
@@ -106,7 +106,7 @@ glob function file::raw(ptr file self) -> ptr FILE {
 glob function file::detach(ptr file self) -> ptr FILE {
     ptr FILE body = self.body;
     self.body     = 0 as ptr FILE;
-    self.owned    = 0 as i8;
+    self.owned    = false;
     body
 }
 
@@ -114,10 +114,10 @@ glob function file::close(ptr file self) -> i32 {
     if not self.body; return 0;
 
     ptr FILE body = self.body;
-    i8 owned      = self.owned;
+    bool owned    = self.owned;
 
     self.body  = 0 as ptr FILE;
-    self.owned = 0 as i8;
+    self.owned = false;
 
     if not owned; return 0;
     fclose(body)
@@ -128,17 +128,17 @@ glob function file::destroy(ptr file self) -> i0 {
     free(self as ptr i0);
 }
 
-glob function file::reopen(ptr file self, ptr i8 path, ptr i8 mode) -> i8 {
-    if not path; return 0 as i8;
-    if not mode; return 0 as i8;
+glob function file::reopen(ptr file self, ptr i8 path, ptr i8 mode) -> bool {
+    if not path; return false;
+    if not mode; return false;
 
     self.close();
 
     ptr FILE body = fopen(path, mode);
-    if not body; return 0 as i8;
+    if not body; return false;
 
-    self.init(body, 1 as i8);
-    1 as i8
+    self.init(body, true);
+    true
 }
 
 glob function file::flush(ptr file self) -> i32 {
@@ -244,14 +244,14 @@ glob function file::clear_error(ptr file self) -> i0 {
     clearerr(self.body);
 }
 
-glob function file::eof(ptr file self) -> i8 {
-    if not self.body; return 0 as i8;
-    (feof(self.body) != 0) as i8
+glob function file::eof(ptr file self) -> bool {
+    if not self.body; return false;
+    (feof(self.body) != 0) as bool
 }
 
-glob function file::error(ptr file self) -> i8 {
-    if not self.body; return 0 as i8;
-    (ferror(self.body) != 0) as i8
+glob function file::error(ptr file self) -> bool {
+    if not self.body; return false;
+    (ferror(self.body) != 0) as bool
 }
 
 glob function file::fd(ptr file self) -> i32 {

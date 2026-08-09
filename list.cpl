@@ -19,7 +19,7 @@ glob function linked_list::new() -> ptr linked_list {
 glob function linked_list::init(ptr linked_list self) -> i0 {
     self.h   = 0 as ptr linked_list_block;
     self.t   = 0 as ptr linked_list_block;
-    self.len = 0;
+    self.len = 0 as u64;
 }
 
 glob function linked_list::add(ptr linked_list self, ptr i0 elem) -> i0 {
@@ -92,7 +92,7 @@ glob function linked_list::clear(ptr linked_list self) -> i0 {
 
     self.h = 0 as ptr linked_list_block;
     self.t = 0 as ptr linked_list_block;
-    self.len = 0;
+    self.len = 0 as u64;
 }
 
 glob function linked_list::destroy(ptr linked_list self) -> i0 {
@@ -105,6 +105,6 @@ glob function linked_list::size(ptr linked_list self) -> u64 {
     self.len
 }
 
-glob function linked_list::empty(ptr linked_list self) -> i8 {
-    (not self.len) as i8
+glob function linked_list::empty(ptr linked_list self) -> bool {
+    (not self.len) as bool
 }

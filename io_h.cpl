@@ -6,6 +6,7 @@
 #include "fcntl_h.cpl"
 #include "unistd_h.cpl"
 #include "string_h.cpl"
+#include "stdbool_h.cpl"
 
 :/ Provides static convenience wrappers for common console, file, descriptor, memory, and string operations.
 All functions remain thin wrappers over the global libc-compatible declarations from the included headers.
@@ -357,23 +358,23 @@ container std {
     :/ Checks whether a path exists.
     - `path`:[ptr i8] - Null-terminated path to inspect.
 
-    Returns 1 when the path is accessible, otherwise 0:[i8]
+    Returns true when the path is accessible, otherwise false:[bool]
     /:
     @[static]
     @[inline(always)]
-    function exists(ptr i8 path) -> i8 {
-        return (access(path, F_OK as i32) == 0) as i8;
+    function exists(ptr i8 path) -> bool {
+        return (access(path, F_OK as i32) == 0) as bool;
     }
 
     :/ Checks whether a path stored in a CPL string object exists.
     - `path`:[ptr string] - String object containing the path.
 
-    Returns 1 when the path is accessible, otherwise 0:[i8]
+    Returns true when the path is accessible, otherwise false:[bool]
     /:
     @[static]
     @[inline(always)]
-    function exists(ptr string path) -> i8 {
-        return (access(path.body, F_OK as i32) == 0) as i8;
+    function exists(ptr string path) -> bool {
+        return (access(path.body, F_OK as i32) == 0) as bool;
     }
 
     :/ Removes a filesystem object by path.

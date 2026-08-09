@@ -276,7 +276,7 @@ container Ray {
 
 @[like_c]
 container RayCollision {
-    i8      hit;
+    bool    hit;
     f32     distance;
     Vector3 point;
     Vector3 normal;
@@ -316,7 +316,7 @@ container Sound {
 container Music {
     AudioStream stream;
     u32         frame_count;
-    i8          looping;
+    bool        looping;
     i32         ctx_type;
     ptr i0      ctx_data;
 }
@@ -981,66 +981,66 @@ function ray_ray_white() -> Color {
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_WindowShouldClose")] @[abi] extern function window_should_close() -> i8;
+@[vname("_WindowShouldClose")] @[abi] extern function window_should_close() -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("WindowShouldClose")] @[abi] extern function window_should_close() -> i8;
+@[vname("WindowShouldClose")] @[abi] extern function window_should_close() -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_IsWindowReady")] @[abi] extern function is_window_ready() -> i8;
+@[vname("_IsWindowReady")] @[abi] extern function is_window_ready() -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("IsWindowReady")] @[abi] extern function is_window_ready() -> i8;
+@[vname("IsWindowReady")] @[abi] extern function is_window_ready() -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_IsWindowFullscreen")] @[abi] extern function is_window_fullscreen() -> i8;
+@[vname("_IsWindowFullscreen")] @[abi] extern function is_window_fullscreen() -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("IsWindowFullscreen")] @[abi] extern function is_window_fullscreen() -> i8;
+@[vname("IsWindowFullscreen")] @[abi] extern function is_window_fullscreen() -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_IsWindowHidden")] @[abi] extern function is_window_hidden() -> i8;
+@[vname("_IsWindowHidden")] @[abi] extern function is_window_hidden() -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("IsWindowHidden")] @[abi] extern function is_window_hidden() -> i8;
+@[vname("IsWindowHidden")] @[abi] extern function is_window_hidden() -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_IsWindowMinimized")] @[abi] extern function is_window_minimized() -> i8;
+@[vname("_IsWindowMinimized")] @[abi] extern function is_window_minimized() -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("IsWindowMinimized")] @[abi] extern function is_window_minimized() -> i8;
+@[vname("IsWindowMinimized")] @[abi] extern function is_window_minimized() -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_IsWindowMaximized")] @[abi] extern function is_window_maximized() -> i8;
+@[vname("_IsWindowMaximized")] @[abi] extern function is_window_maximized() -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("IsWindowMaximized")] @[abi] extern function is_window_maximized() -> i8;
+@[vname("IsWindowMaximized")] @[abi] extern function is_window_maximized() -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_IsWindowFocused")] @[abi] extern function is_window_focused() -> i8;
+@[vname("_IsWindowFocused")] @[abi] extern function is_window_focused() -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("IsWindowFocused")] @[abi] extern function is_window_focused() -> i8;
+@[vname("IsWindowFocused")] @[abi] extern function is_window_focused() -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_IsWindowResized")] @[abi] extern function is_window_resized() -> i8;
+@[vname("_IsWindowResized")] @[abi] extern function is_window_resized() -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("IsWindowResized")] @[abi] extern function is_window_resized() -> i8;
+@[vname("IsWindowResized")] @[abi] extern function is_window_resized() -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_IsWindowState")] @[abi] extern function is_window_state(u32 flag) -> i8;
+@[vname("_IsWindowState")] @[abi] extern function is_window_state(u32 flag) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("IsWindowState")] @[abi] extern function is_window_state(u32 flag) -> i8;
+@[vname("IsWindowState")] @[abi] extern function is_window_state(u32 flag) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
@@ -1324,10 +1324,10 @@ function ray_ray_white() -> Color {
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_IsCursorHidden")] @[abi] extern function is_cursor_hidden() -> i8;
+@[vname("_IsCursorHidden")] @[abi] extern function is_cursor_hidden() -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("IsCursorHidden")] @[abi] extern function is_cursor_hidden() -> i8;
+@[vname("IsCursorHidden")] @[abi] extern function is_cursor_hidden() -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
@@ -1345,10 +1345,10 @@ function ray_ray_white() -> Color {
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_IsCursorOnScreen")] @[abi] extern function is_cursor_on_screen() -> i8;
+@[vname("_IsCursorOnScreen")] @[abi] extern function is_cursor_on_screen() -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("IsCursorOnScreen")] @[abi] extern function is_cursor_on_screen() -> i8;
+@[vname("IsCursorOnScreen")] @[abi] extern function is_cursor_on_screen() -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
@@ -1499,10 +1499,10 @@ function ray_ray_white() -> Color {
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_IsShaderValid")] @[abi] extern function is_shader_valid(Shader shader) -> i8;
+@[vname("_IsShaderValid")] @[abi] extern function is_shader_valid(Shader shader) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("IsShaderValid")] @[abi] extern function is_shader_valid(Shader shader) -> i8;
+@[vname("IsShaderValid")] @[abi] extern function is_shader_valid(Shader shader) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
@@ -1765,17 +1765,17 @@ function ray_ray_white() -> Color {
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_SaveFileData")] @[abi] extern function save_file_data(ptr i8 file_name, ptr i0 data, i32 data_size) -> i8;
+@[vname("_SaveFileData")] @[abi] extern function save_file_data(ptr i8 file_name, ptr i0 data, i32 data_size) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("SaveFileData")] @[abi] extern function save_file_data(ptr i8 file_name, ptr i0 data, i32 data_size) -> i8;
+@[vname("SaveFileData")] @[abi] extern function save_file_data(ptr i8 file_name, ptr i0 data, i32 data_size) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_ExportDataAsCode")] @[abi] extern function export_data_as_code(ptr u8 data, i32 data_size, ptr i8 file_name) -> i8;
+@[vname("_ExportDataAsCode")] @[abi] extern function export_data_as_code(ptr u8 data, i32 data_size, ptr i8 file_name) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("ExportDataAsCode")] @[abi] extern function export_data_as_code(ptr u8 data, i32 data_size, ptr i8 file_name) -> i8;
+@[vname("ExportDataAsCode")] @[abi] extern function export_data_as_code(ptr u8 data, i32 data_size, ptr i8 file_name) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
@@ -1793,10 +1793,10 @@ function ray_ray_white() -> Color {
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_SaveFileText")] @[abi] extern function save_file_text(ptr i8 file_name, ptr i8 text) -> i8;
+@[vname("_SaveFileText")] @[abi] extern function save_file_text(ptr i8 file_name, ptr i8 text) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("SaveFileText")] @[abi] extern function save_file_text(ptr i8 file_name, ptr i8 text) -> i8;
+@[vname("SaveFileText")] @[abi] extern function save_file_text(ptr i8 file_name, ptr i8 text) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
@@ -1870,24 +1870,24 @@ function ray_ray_white() -> Color {
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_FileExists")] @[abi] extern function file_exists(ptr i8 file_name) -> i8;
+@[vname("_FileExists")] @[abi] extern function file_exists(ptr i8 file_name) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("FileExists")] @[abi] extern function file_exists(ptr i8 file_name) -> i8;
+@[vname("FileExists")] @[abi] extern function file_exists(ptr i8 file_name) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_DirectoryExists")] @[abi] extern function directory_exists(ptr i8 dir_path) -> i8;
+@[vname("_DirectoryExists")] @[abi] extern function directory_exists(ptr i8 dir_path) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("DirectoryExists")] @[abi] extern function directory_exists(ptr i8 dir_path) -> i8;
+@[vname("DirectoryExists")] @[abi] extern function directory_exists(ptr i8 dir_path) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_IsFileExtension")] @[abi] extern function is_file_extension(ptr i8 file_name, ptr i8 ext) -> i8;
+@[vname("_IsFileExtension")] @[abi] extern function is_file_extension(ptr i8 file_name, ptr i8 ext) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("IsFileExtension")] @[abi] extern function is_file_extension(ptr i8 file_name, ptr i8 ext) -> i8;
+@[vname("IsFileExtension")] @[abi] extern function is_file_extension(ptr i8 file_name, ptr i8 ext) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
@@ -1961,24 +1961,24 @@ function ray_ray_white() -> Color {
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_ChangeDirectory")] @[abi] extern function change_directory(ptr i8 dir_path) -> i8;
+@[vname("_ChangeDirectory")] @[abi] extern function change_directory(ptr i8 dir_path) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("ChangeDirectory")] @[abi] extern function change_directory(ptr i8 dir_path) -> i8;
+@[vname("ChangeDirectory")] @[abi] extern function change_directory(ptr i8 dir_path) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_IsPathFile")] @[abi] extern function is_path_file(ptr i8 path) -> i8;
+@[vname("_IsPathFile")] @[abi] extern function is_path_file(ptr i8 path) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("IsPathFile")] @[abi] extern function is_path_file(ptr i8 path) -> i8;
+@[vname("IsPathFile")] @[abi] extern function is_path_file(ptr i8 path) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_IsFileNameValid")] @[abi] extern function is_file_name_valid(ptr i8 file_name) -> i8;
+@[vname("_IsFileNameValid")] @[abi] extern function is_file_name_valid(ptr i8 file_name) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("IsFileNameValid")] @[abi] extern function is_file_name_valid(ptr i8 file_name) -> i8;
+@[vname("IsFileNameValid")] @[abi] extern function is_file_name_valid(ptr i8 file_name) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
@@ -2003,10 +2003,10 @@ function ray_ray_white() -> Color {
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_IsFileDropped")] @[abi] extern function is_file_dropped() -> i8;
+@[vname("_IsFileDropped")] @[abi] extern function is_file_dropped() -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("IsFileDropped")] @[abi] extern function is_file_dropped() -> i8;
+@[vname("IsFileDropped")] @[abi] extern function is_file_dropped() -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
@@ -2108,10 +2108,10 @@ function ray_ray_white() -> Color {
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_ExportAutomationEventList")] @[abi] extern function export_automation_event_list(AutomationEventList list, ptr i8 file_name) -> i8;
+@[vname("_ExportAutomationEventList")] @[abi] extern function export_automation_event_list(AutomationEventList list, ptr i8 file_name) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("ExportAutomationEventList")] @[abi] extern function export_automation_event_list(AutomationEventList list, ptr i8 file_name) -> i8;
+@[vname("ExportAutomationEventList")] @[abi] extern function export_automation_event_list(AutomationEventList list, ptr i8 file_name) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
@@ -2150,38 +2150,38 @@ function ray_ray_white() -> Color {
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_IsKeyPressed")] @[abi] extern function is_key_pressed(i32 key) -> i8;
+@[vname("_IsKeyPressed")] @[abi] extern function is_key_pressed(i32 key) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("IsKeyPressed")] @[abi] extern function is_key_pressed(i32 key) -> i8;
+@[vname("IsKeyPressed")] @[abi] extern function is_key_pressed(i32 key) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_IsKeyPressedRepeat")] @[abi] extern function is_key_pressed_repeat(i32 key) -> i8;
+@[vname("_IsKeyPressedRepeat")] @[abi] extern function is_key_pressed_repeat(i32 key) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("IsKeyPressedRepeat")] @[abi] extern function is_key_pressed_repeat(i32 key) -> i8;
+@[vname("IsKeyPressedRepeat")] @[abi] extern function is_key_pressed_repeat(i32 key) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_IsKeyDown")] @[abi] extern function is_key_down(i32 key) -> i8;
+@[vname("_IsKeyDown")] @[abi] extern function is_key_down(i32 key) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("IsKeyDown")] @[abi] extern function is_key_down(i32 key) -> i8;
+@[vname("IsKeyDown")] @[abi] extern function is_key_down(i32 key) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_IsKeyReleased")] @[abi] extern function is_key_released(i32 key) -> i8;
+@[vname("_IsKeyReleased")] @[abi] extern function is_key_released(i32 key) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("IsKeyReleased")] @[abi] extern function is_key_released(i32 key) -> i8;
+@[vname("IsKeyReleased")] @[abi] extern function is_key_released(i32 key) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_IsKeyUp")] @[abi] extern function is_key_up(i32 key) -> i8;
+@[vname("_IsKeyUp")] @[abi] extern function is_key_up(i32 key) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("IsKeyUp")] @[abi] extern function is_key_up(i32 key) -> i8;
+@[vname("IsKeyUp")] @[abi] extern function is_key_up(i32 key) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
@@ -2213,10 +2213,10 @@ function ray_ray_white() -> Color {
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_IsGamepadAvailable")] @[abi] extern function is_gamepad_available(i32 gamepad) -> i8;
+@[vname("_IsGamepadAvailable")] @[abi] extern function is_gamepad_available(i32 gamepad) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("IsGamepadAvailable")] @[abi] extern function is_gamepad_available(i32 gamepad) -> i8;
+@[vname("IsGamepadAvailable")] @[abi] extern function is_gamepad_available(i32 gamepad) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
@@ -2227,31 +2227,31 @@ function ray_ray_white() -> Color {
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_IsGamepadButtonPressed")] @[abi] extern function is_gamepad_button_pressed(i32 gamepad, i32 button) -> i8;
+@[vname("_IsGamepadButtonPressed")] @[abi] extern function is_gamepad_button_pressed(i32 gamepad, i32 button) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("IsGamepadButtonPressed")] @[abi] extern function is_gamepad_button_pressed(i32 gamepad, i32 button) -> i8;
+@[vname("IsGamepadButtonPressed")] @[abi] extern function is_gamepad_button_pressed(i32 gamepad, i32 button) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_IsGamepadButtonDown")] @[abi] extern function is_gamepad_button_down(i32 gamepad, i32 button) -> i8;
+@[vname("_IsGamepadButtonDown")] @[abi] extern function is_gamepad_button_down(i32 gamepad, i32 button) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("IsGamepadButtonDown")] @[abi] extern function is_gamepad_button_down(i32 gamepad, i32 button) -> i8;
+@[vname("IsGamepadButtonDown")] @[abi] extern function is_gamepad_button_down(i32 gamepad, i32 button) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_IsGamepadButtonReleased")] @[abi] extern function is_gamepad_button_released(i32 gamepad, i32 button) -> i8;
+@[vname("_IsGamepadButtonReleased")] @[abi] extern function is_gamepad_button_released(i32 gamepad, i32 button) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("IsGamepadButtonReleased")] @[abi] extern function is_gamepad_button_released(i32 gamepad, i32 button) -> i8;
+@[vname("IsGamepadButtonReleased")] @[abi] extern function is_gamepad_button_released(i32 gamepad, i32 button) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_IsGamepadButtonUp")] @[abi] extern function is_gamepad_button_up(i32 gamepad, i32 button) -> i8;
+@[vname("_IsGamepadButtonUp")] @[abi] extern function is_gamepad_button_up(i32 gamepad, i32 button) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("IsGamepadButtonUp")] @[abi] extern function is_gamepad_button_up(i32 gamepad, i32 button) -> i8;
+@[vname("IsGamepadButtonUp")] @[abi] extern function is_gamepad_button_up(i32 gamepad, i32 button) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
@@ -2290,31 +2290,31 @@ function ray_ray_white() -> Color {
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_IsMouseButtonPressed")] @[abi] extern function is_mouse_button_pressed(i32 button) -> i8;
+@[vname("_IsMouseButtonPressed")] @[abi] extern function is_mouse_button_pressed(i32 button) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("IsMouseButtonPressed")] @[abi] extern function is_mouse_button_pressed(i32 button) -> i8;
+@[vname("IsMouseButtonPressed")] @[abi] extern function is_mouse_button_pressed(i32 button) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_IsMouseButtonDown")] @[abi] extern function is_mouse_button_down(i32 button) -> i8;
+@[vname("_IsMouseButtonDown")] @[abi] extern function is_mouse_button_down(i32 button) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("IsMouseButtonDown")] @[abi] extern function is_mouse_button_down(i32 button) -> i8;
+@[vname("IsMouseButtonDown")] @[abi] extern function is_mouse_button_down(i32 button) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_IsMouseButtonReleased")] @[abi] extern function is_mouse_button_released(i32 button) -> i8;
+@[vname("_IsMouseButtonReleased")] @[abi] extern function is_mouse_button_released(i32 button) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("IsMouseButtonReleased")] @[abi] extern function is_mouse_button_released(i32 button) -> i8;
+@[vname("IsMouseButtonReleased")] @[abi] extern function is_mouse_button_released(i32 button) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_IsMouseButtonUp")] @[abi] extern function is_mouse_button_up(i32 button) -> i8;
+@[vname("_IsMouseButtonUp")] @[abi] extern function is_mouse_button_up(i32 button) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("IsMouseButtonUp")] @[abi] extern function is_mouse_button_up(i32 button) -> i8;
+@[vname("IsMouseButtonUp")] @[abi] extern function is_mouse_button_up(i32 button) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
@@ -2430,10 +2430,10 @@ function ray_ray_white() -> Color {
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_IsGestureDetected")] @[abi] extern function is_gesture_detected(u32 gesture) -> i8;
+@[vname("_IsGestureDetected")] @[abi] extern function is_gesture_detected(u32 gesture) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("IsGestureDetected")] @[abi] extern function is_gesture_detected(u32 gesture) -> i8;
+@[vname("IsGestureDetected")] @[abi] extern function is_gesture_detected(u32 gesture) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
@@ -2899,73 +2899,73 @@ function ray_ray_white() -> Color {
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_CheckCollisionRecs")] @[abi] extern function check_collision_recs(Rectangle rec1, Rectangle rec2) -> i8;
+@[vname("_CheckCollisionRecs")] @[abi] extern function check_collision_recs(Rectangle rec1, Rectangle rec2) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("CheckCollisionRecs")] @[abi] extern function check_collision_recs(Rectangle rec1, Rectangle rec2) -> i8;
+@[vname("CheckCollisionRecs")] @[abi] extern function check_collision_recs(Rectangle rec1, Rectangle rec2) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_CheckCollisionCircles")] @[abi] extern function check_collision_circles(Vector2 center1, f32 radius1, Vector2 center2, f32 radius2) -> i8;
+@[vname("_CheckCollisionCircles")] @[abi] extern function check_collision_circles(Vector2 center1, f32 radius1, Vector2 center2, f32 radius2) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("CheckCollisionCircles")] @[abi] extern function check_collision_circles(Vector2 center1, f32 radius1, Vector2 center2, f32 radius2) -> i8;
+@[vname("CheckCollisionCircles")] @[abi] extern function check_collision_circles(Vector2 center1, f32 radius1, Vector2 center2, f32 radius2) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_CheckCollisionCircleRec")] @[abi] extern function check_collision_circle_rec(Vector2 center, f32 radius, Rectangle rec) -> i8;
+@[vname("_CheckCollisionCircleRec")] @[abi] extern function check_collision_circle_rec(Vector2 center, f32 radius, Rectangle rec) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("CheckCollisionCircleRec")] @[abi] extern function check_collision_circle_rec(Vector2 center, f32 radius, Rectangle rec) -> i8;
+@[vname("CheckCollisionCircleRec")] @[abi] extern function check_collision_circle_rec(Vector2 center, f32 radius, Rectangle rec) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_CheckCollisionCircleLine")] @[abi] extern function check_collision_circle_line(Vector2 center, f32 radius, Vector2 p1, Vector2 p2) -> i8;
+@[vname("_CheckCollisionCircleLine")] @[abi] extern function check_collision_circle_line(Vector2 center, f32 radius, Vector2 p1, Vector2 p2) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("CheckCollisionCircleLine")] @[abi] extern function check_collision_circle_line(Vector2 center, f32 radius, Vector2 p1, Vector2 p2) -> i8;
+@[vname("CheckCollisionCircleLine")] @[abi] extern function check_collision_circle_line(Vector2 center, f32 radius, Vector2 p1, Vector2 p2) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_CheckCollisionPointRec")] @[abi] extern function check_collision_point_rec(Vector2 point, Rectangle rec) -> i8;
+@[vname("_CheckCollisionPointRec")] @[abi] extern function check_collision_point_rec(Vector2 point, Rectangle rec) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("CheckCollisionPointRec")] @[abi] extern function check_collision_point_rec(Vector2 point, Rectangle rec) -> i8;
+@[vname("CheckCollisionPointRec")] @[abi] extern function check_collision_point_rec(Vector2 point, Rectangle rec) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_CheckCollisionPointCircle")] @[abi] extern function check_collision_point_circle(Vector2 point, Vector2 center, f32 radius) -> i8;
+@[vname("_CheckCollisionPointCircle")] @[abi] extern function check_collision_point_circle(Vector2 point, Vector2 center, f32 radius) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("CheckCollisionPointCircle")] @[abi] extern function check_collision_point_circle(Vector2 point, Vector2 center, f32 radius) -> i8;
+@[vname("CheckCollisionPointCircle")] @[abi] extern function check_collision_point_circle(Vector2 point, Vector2 center, f32 radius) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_CheckCollisionPointTriangle")] @[abi] extern function check_collision_point_triangle(Vector2 point, Vector2 p1, Vector2 p2, Vector2 p3) -> i8;
+@[vname("_CheckCollisionPointTriangle")] @[abi] extern function check_collision_point_triangle(Vector2 point, Vector2 p1, Vector2 p2, Vector2 p3) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("CheckCollisionPointTriangle")] @[abi] extern function check_collision_point_triangle(Vector2 point, Vector2 p1, Vector2 p2, Vector2 p3) -> i8;
+@[vname("CheckCollisionPointTriangle")] @[abi] extern function check_collision_point_triangle(Vector2 point, Vector2 p1, Vector2 p2, Vector2 p3) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_CheckCollisionPointLine")] @[abi] extern function check_collision_point_line(Vector2 point, Vector2 p1, Vector2 p2, i32 threshold) -> i8;
+@[vname("_CheckCollisionPointLine")] @[abi] extern function check_collision_point_line(Vector2 point, Vector2 p1, Vector2 p2, i32 threshold) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("CheckCollisionPointLine")] @[abi] extern function check_collision_point_line(Vector2 point, Vector2 p1, Vector2 p2, i32 threshold) -> i8;
+@[vname("CheckCollisionPointLine")] @[abi] extern function check_collision_point_line(Vector2 point, Vector2 p1, Vector2 p2, i32 threshold) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_CheckCollisionPointPoly")] @[abi] extern function check_collision_point_poly(Vector2 point, ptr Vector2 points, i32 point_count) -> i8;
+@[vname("_CheckCollisionPointPoly")] @[abi] extern function check_collision_point_poly(Vector2 point, ptr Vector2 points, i32 point_count) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("CheckCollisionPointPoly")] @[abi] extern function check_collision_point_poly(Vector2 point, ptr Vector2 points, i32 point_count) -> i8;
+@[vname("CheckCollisionPointPoly")] @[abi] extern function check_collision_point_poly(Vector2 point, ptr Vector2 points, i32 point_count) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_CheckCollisionLines")] @[abi] extern function check_collision_lines(Vector2 start_pos1, Vector2 end_pos1, Vector2 start_pos2, Vector2 end_pos2, ptr Vector2 collision_point) -> i8;
+@[vname("_CheckCollisionLines")] @[abi] extern function check_collision_lines(Vector2 start_pos1, Vector2 end_pos1, Vector2 start_pos2, Vector2 end_pos2, ptr Vector2 collision_point) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("CheckCollisionLines")] @[abi] extern function check_collision_lines(Vector2 start_pos1, Vector2 end_pos1, Vector2 start_pos2, Vector2 end_pos2, ptr Vector2 collision_point) -> i8;
+@[vname("CheckCollisionLines")] @[abi] extern function check_collision_lines(Vector2 start_pos1, Vector2 end_pos1, Vector2 start_pos2, Vector2 end_pos2, ptr Vector2 collision_point) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
@@ -3025,10 +3025,10 @@ function ray_ray_white() -> Color {
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_IsImageValid")] @[abi] extern function is_image_valid(Image image) -> i8;
+@[vname("_IsImageValid")] @[abi] extern function is_image_valid(Image image) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("IsImageValid")] @[abi] extern function is_image_valid(Image image) -> i8;
+@[vname("IsImageValid")] @[abi] extern function is_image_valid(Image image) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
@@ -3039,10 +3039,10 @@ function ray_ray_white() -> Color {
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_ExportImage")] @[abi] extern function export_image(Image image, ptr i8 file_name) -> i8;
+@[vname("_ExportImage")] @[abi] extern function export_image(Image image, ptr i8 file_name) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("ExportImage")] @[abi] extern function export_image(Image image, ptr i8 file_name) -> i8;
+@[vname("ExportImage")] @[abi] extern function export_image(Image image, ptr i8 file_name) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
@@ -3053,10 +3053,10 @@ function ray_ray_white() -> Color {
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_ExportImageAsCode")] @[abi] extern function export_image_as_code(Image image, ptr i8 file_name) -> i8;
+@[vname("_ExportImageAsCode")] @[abi] extern function export_image_as_code(Image image, ptr i8 file_name) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("ExportImageAsCode")] @[abi] extern function export_image_as_code(Image image, ptr i8 file_name) -> i8;
+@[vname("ExportImageAsCode")] @[abi] extern function export_image_as_code(Image image, ptr i8 file_name) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
@@ -3557,10 +3557,10 @@ function ray_ray_white() -> Color {
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_IsTextureValid")] @[abi] extern function is_texture_valid(Texture2D texture) -> i8;
+@[vname("_IsTextureValid")] @[abi] extern function is_texture_valid(Texture2D texture) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("IsTextureValid")] @[abi] extern function is_texture_valid(Texture2D texture) -> i8;
+@[vname("IsTextureValid")] @[abi] extern function is_texture_valid(Texture2D texture) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
@@ -3571,10 +3571,10 @@ function ray_ray_white() -> Color {
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_IsRenderTextureValid")] @[abi] extern function is_render_texture_valid(RenderTexture2D target) -> i8;
+@[vname("_IsRenderTextureValid")] @[abi] extern function is_render_texture_valid(RenderTexture2D target) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("IsRenderTextureValid")] @[abi] extern function is_render_texture_valid(RenderTexture2D target) -> i8;
+@[vname("IsRenderTextureValid")] @[abi] extern function is_render_texture_valid(RenderTexture2D target) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
@@ -3662,10 +3662,10 @@ function ray_ray_white() -> Color {
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_ColorIsEqual")] @[abi] extern function color_is_equal(Color col1, Color col2) -> i8;
+@[vname("_ColorIsEqual")] @[abi] extern function color_is_equal(Color col1, Color col2) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("ColorIsEqual")] @[abi] extern function color_is_equal(Color col1, Color col2) -> i8;
+@[vname("ColorIsEqual")] @[abi] extern function color_is_equal(Color col1, Color col2) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
@@ -3816,10 +3816,10 @@ function ray_ray_white() -> Color {
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_IsFontValid")] @[abi] extern function is_font_valid(Font font) -> i8;
+@[vname("_IsFontValid")] @[abi] extern function is_font_valid(Font font) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("IsFontValid")] @[abi] extern function is_font_valid(Font font) -> i8;
+@[vname("IsFontValid")] @[abi] extern function is_font_valid(Font font) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
@@ -3851,10 +3851,10 @@ function ray_ray_white() -> Color {
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_ExportFontAsCode")] @[abi] extern function export_font_as_code(Font font, ptr i8 file_name) -> i8;
+@[vname("_ExportFontAsCode")] @[abi] extern function export_font_as_code(Font font, ptr i8 file_name) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("ExportFontAsCode")] @[abi] extern function export_font_as_code(Font font, ptr i8 file_name) -> i8;
+@[vname("ExportFontAsCode")] @[abi] extern function export_font_as_code(Font font, ptr i8 file_name) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
@@ -4033,10 +4033,10 @@ function ray_ray_white() -> Color {
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_TextIsEqual")] @[abi] extern function text_is_equal(ptr i8 text1, ptr i8 text2) -> i8;
+@[vname("_TextIsEqual")] @[abi] extern function text_is_equal(ptr i8 text1, ptr i8 text2) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("TextIsEqual")] @[abi] extern function text_is_equal(ptr i8 text1, ptr i8 text2) -> i8;
+@[vname("TextIsEqual")] @[abi] extern function text_is_equal(ptr i8 text1, ptr i8 text2) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
@@ -4355,10 +4355,10 @@ function ray_ray_white() -> Color {
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_IsModelValid")] @[abi] extern function is_model_valid(Model model) -> i8;
+@[vname("_IsModelValid")] @[abi] extern function is_model_valid(Model model) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("IsModelValid")] @[abi] extern function is_model_valid(Model model) -> i8;
+@[vname("IsModelValid")] @[abi] extern function is_model_valid(Model model) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
@@ -4481,17 +4481,17 @@ function ray_ray_white() -> Color {
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_ExportMesh")] @[abi] extern function export_mesh(Mesh mesh, ptr i8 file_name) -> i8;
+@[vname("_ExportMesh")] @[abi] extern function export_mesh(Mesh mesh, ptr i8 file_name) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("ExportMesh")] @[abi] extern function export_mesh(Mesh mesh, ptr i8 file_name) -> i8;
+@[vname("ExportMesh")] @[abi] extern function export_mesh(Mesh mesh, ptr i8 file_name) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_ExportMeshAsCode")] @[abi] extern function export_mesh_as_code(Mesh mesh, ptr i8 file_name) -> i8;
+@[vname("_ExportMeshAsCode")] @[abi] extern function export_mesh_as_code(Mesh mesh, ptr i8 file_name) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("ExportMeshAsCode")] @[abi] extern function export_mesh_as_code(Mesh mesh, ptr i8 file_name) -> i8;
+@[vname("ExportMeshAsCode")] @[abi] extern function export_mesh_as_code(Mesh mesh, ptr i8 file_name) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
@@ -4586,10 +4586,10 @@ function ray_ray_white() -> Color {
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_IsMaterialValid")] @[abi] extern function is_material_valid(Material material) -> i8;
+@[vname("_IsMaterialValid")] @[abi] extern function is_material_valid(Material material) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("IsMaterialValid")] @[abi] extern function is_material_valid(Material material) -> i8;
+@[vname("IsMaterialValid")] @[abi] extern function is_material_valid(Material material) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
@@ -4642,31 +4642,31 @@ function ray_ray_white() -> Color {
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_IsModelAnimationValid")] @[abi] extern function is_model_animation_valid(Model model, ModelAnimation anim) -> i8;
+@[vname("_IsModelAnimationValid")] @[abi] extern function is_model_animation_valid(Model model, ModelAnimation anim) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("IsModelAnimationValid")] @[abi] extern function is_model_animation_valid(Model model, ModelAnimation anim) -> i8;
+@[vname("IsModelAnimationValid")] @[abi] extern function is_model_animation_valid(Model model, ModelAnimation anim) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_CheckCollisionSpheres")] @[abi] extern function check_collision_spheres(Vector3 center1, f32 radius1, Vector3 center2, f32 radius2) -> i8;
+@[vname("_CheckCollisionSpheres")] @[abi] extern function check_collision_spheres(Vector3 center1, f32 radius1, Vector3 center2, f32 radius2) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("CheckCollisionSpheres")] @[abi] extern function check_collision_spheres(Vector3 center1, f32 radius1, Vector3 center2, f32 radius2) -> i8;
+@[vname("CheckCollisionSpheres")] @[abi] extern function check_collision_spheres(Vector3 center1, f32 radius1, Vector3 center2, f32 radius2) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_CheckCollisionBoxes")] @[abi] extern function check_collision_boxes(BoundingBox box1, BoundingBox box2) -> i8;
+@[vname("_CheckCollisionBoxes")] @[abi] extern function check_collision_boxes(BoundingBox box1, BoundingBox box2) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("CheckCollisionBoxes")] @[abi] extern function check_collision_boxes(BoundingBox box1, BoundingBox box2) -> i8;
+@[vname("CheckCollisionBoxes")] @[abi] extern function check_collision_boxes(BoundingBox box1, BoundingBox box2) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_CheckCollisionBoxSphere")] @[abi] extern function check_collision_box_sphere(BoundingBox box, Vector3 center, f32 radius) -> i8;
+@[vname("_CheckCollisionBoxSphere")] @[abi] extern function check_collision_box_sphere(BoundingBox box, Vector3 center, f32 radius) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("CheckCollisionBoxSphere")] @[abi] extern function check_collision_box_sphere(BoundingBox box, Vector3 center, f32 radius) -> i8;
+@[vname("CheckCollisionBoxSphere")] @[abi] extern function check_collision_box_sphere(BoundingBox box, Vector3 center, f32 radius) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
@@ -4719,10 +4719,10 @@ function ray_ray_white() -> Color {
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_IsAudioDeviceReady")] @[abi] extern function is_audio_device_ready() -> i8;
+@[vname("_IsAudioDeviceReady")] @[abi] extern function is_audio_device_ready() -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("IsAudioDeviceReady")] @[abi] extern function is_audio_device_ready() -> i8;
+@[vname("IsAudioDeviceReady")] @[abi] extern function is_audio_device_ready() -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
@@ -4754,10 +4754,10 @@ function ray_ray_white() -> Color {
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_IsWaveValid")] @[abi] extern function is_wave_valid(Wave wave) -> i8;
+@[vname("_IsWaveValid")] @[abi] extern function is_wave_valid(Wave wave) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("IsWaveValid")] @[abi] extern function is_wave_valid(Wave wave) -> i8;
+@[vname("IsWaveValid")] @[abi] extern function is_wave_valid(Wave wave) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
@@ -4782,10 +4782,10 @@ function ray_ray_white() -> Color {
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_IsSoundValid")] @[abi] extern function is_sound_valid(Sound sound) -> i8;
+@[vname("_IsSoundValid")] @[abi] extern function is_sound_valid(Sound sound) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("IsSoundValid")] @[abi] extern function is_sound_valid(Sound sound) -> i8;
+@[vname("IsSoundValid")] @[abi] extern function is_sound_valid(Sound sound) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
@@ -4817,17 +4817,17 @@ function ray_ray_white() -> Color {
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_ExportWave")] @[abi] extern function export_wave(Wave wave, ptr i8 file_name) -> i8;
+@[vname("_ExportWave")] @[abi] extern function export_wave(Wave wave, ptr i8 file_name) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("ExportWave")] @[abi] extern function export_wave(Wave wave, ptr i8 file_name) -> i8;
+@[vname("ExportWave")] @[abi] extern function export_wave(Wave wave, ptr i8 file_name) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_ExportWaveAsCode")] @[abi] extern function export_wave_as_code(Wave wave, ptr i8 file_name) -> i8;
+@[vname("_ExportWaveAsCode")] @[abi] extern function export_wave_as_code(Wave wave, ptr i8 file_name) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("ExportWaveAsCode")] @[abi] extern function export_wave_as_code(Wave wave, ptr i8 file_name) -> i8;
+@[vname("ExportWaveAsCode")] @[abi] extern function export_wave_as_code(Wave wave, ptr i8 file_name) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
@@ -4859,10 +4859,10 @@ function ray_ray_white() -> Color {
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_IsSoundPlaying")] @[abi] extern function is_sound_playing(Sound sound) -> i8;
+@[vname("_IsSoundPlaying")] @[abi] extern function is_sound_playing(Sound sound) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("IsSoundPlaying")] @[abi] extern function is_sound_playing(Sound sound) -> i8;
+@[vname("IsSoundPlaying")] @[abi] extern function is_sound_playing(Sound sound) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
@@ -4936,10 +4936,10 @@ function ray_ray_white() -> Color {
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_IsMusicValid")] @[abi] extern function is_music_valid(Music music) -> i8;
+@[vname("_IsMusicValid")] @[abi] extern function is_music_valid(Music music) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("IsMusicValid")] @[abi] extern function is_music_valid(Music music) -> i8;
+@[vname("IsMusicValid")] @[abi] extern function is_music_valid(Music music) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
@@ -4957,10 +4957,10 @@ function ray_ray_white() -> Color {
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_IsMusicStreamPlaying")] @[abi] extern function is_music_stream_playing(Music music) -> i8;
+@[vname("_IsMusicStreamPlaying")] @[abi] extern function is_music_stream_playing(Music music) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("IsMusicStreamPlaying")] @[abi] extern function is_music_stream_playing(Music music) -> i8;
+@[vname("IsMusicStreamPlaying")] @[abi] extern function is_music_stream_playing(Music music) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
@@ -5041,10 +5041,10 @@ function ray_ray_white() -> Color {
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_IsAudioStreamValid")] @[abi] extern function is_audio_stream_valid(AudioStream stream) -> i8;
+@[vname("_IsAudioStreamValid")] @[abi] extern function is_audio_stream_valid(AudioStream stream) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("IsAudioStreamValid")] @[abi] extern function is_audio_stream_valid(AudioStream stream) -> i8;
+@[vname("IsAudioStreamValid")] @[abi] extern function is_audio_stream_valid(AudioStream stream) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
@@ -5062,10 +5062,10 @@ function ray_ray_white() -> Color {
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_IsAudioStreamProcessed")] @[abi] extern function is_audio_stream_processed(AudioStream stream) -> i8;
+@[vname("_IsAudioStreamProcessed")] @[abi] extern function is_audio_stream_processed(AudioStream stream) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("IsAudioStreamProcessed")] @[abi] extern function is_audio_stream_processed(AudioStream stream) -> i8;
+@[vname("IsAudioStreamProcessed")] @[abi] extern function is_audio_stream_processed(AudioStream stream) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64
@@ -5090,10 +5090,10 @@ function ray_ray_white() -> Color {
 #endif
 
 #ifdef CCPL_MACHO64
-@[vname("_IsAudioStreamPlaying")] @[abi] extern function is_audio_stream_playing(AudioStream stream) -> i8;
+@[vname("_IsAudioStreamPlaying")] @[abi] extern function is_audio_stream_playing(AudioStream stream) -> bool;
 #endif
 #ifndef CCPL_MACHO64
-@[vname("IsAudioStreamPlaying")] @[abi] extern function is_audio_stream_playing(AudioStream stream) -> i8;
+@[vname("IsAudioStreamPlaying")] @[abi] extern function is_audio_stream_playing(AudioStream stream) -> bool;
 #endif
 
 #ifdef CCPL_MACHO64

@@ -2,6 +2,7 @@
 #define LIST_H_ 0
 
 #include "stdlib_h.cpl"
+#include "stdbool_h.cpl"
 
 :/ Internal doubly linked list node.
 - `elem`:[ptr i0] - Caller-owned payload pointer stored in this node.
@@ -40,7 +41,7 @@ container linked_list {
 
     Returns a new list with null head/tail and zero length, or a null pointer on allocation failure:[ptr linked_list]
     /:
-    @[vname("__linked_list_new")] @[abi]
+    @[abi]
     glob function new() -> ptr linked_list;
 
     :/ Initializes an already allocated linked list object as empty.
@@ -50,7 +51,7 @@ container linked_list {
     Returns nothing:[i0]
     /:
     @[self]
-    @[vname("__linked_list_init")] @[abi]
+    @[abi]
     glob function init(ptr linked_list self) -> i0;
 
     :/ Appends a payload pointer to the end of the list.
@@ -61,7 +62,7 @@ container linked_list {
     Returns nothing:[i0]
     /:
     @[self]
-    @[vname("__linked_list_add")] @[abi]
+    @[abi]
     glob function add(ptr linked_list self, ptr i0 elem) -> i0;
 
     :/ Inserts a payload pointer at the front of the list.
@@ -72,7 +73,7 @@ container linked_list {
     Returns nothing:[i0]
     /:
     @[self]
-    @[vname("__linked_list_push_front")] @[abi]
+    @[abi]
     glob function push_front(ptr linked_list self, ptr i0 elem) -> i0;
 
     :/ Inserts a payload pointer at the back of the list.
@@ -83,7 +84,7 @@ container linked_list {
     Returns nothing:[i0]
     /:
     @[self]
-    @[vname("__linked_list_push_back")] @[abi]
+    @[abi]
     glob function push_back(ptr linked_list self, ptr i0 elem) -> i0;
 
     :/ Reads the payload pointer stored at the front of the list.
@@ -92,7 +93,7 @@ container linked_list {
     Returns the head payload pointer, or a null pointer when the list is empty:[ptr i0]
     /:
     @[self]
-    @[vname("__linked_list_front")] @[abi]
+    @[abi]
     glob function front(ptr linked_list self) -> ptr i0;
 
     :/ Reads the payload pointer stored at the back of the list.
@@ -101,7 +102,7 @@ container linked_list {
     Returns the tail payload pointer, or a null pointer when the list is empty:[ptr i0]
     /:
     @[self]
-    @[vname("__linked_list_back")] @[abi]
+    @[abi]
     glob function back(ptr linked_list self) -> ptr i0;
 
     :/ Removes the front node and returns its payload pointer.
@@ -111,7 +112,7 @@ container linked_list {
     Returns the removed payload pointer, or a null pointer when the list is empty:[ptr i0]
     /:
     @[self]
-    @[vname("__linked_list_pop_front")] @[abi]
+    @[abi]
     glob function pop_front(ptr linked_list self) -> ptr i0;
 
     :/ Removes the back node and returns its payload pointer.
@@ -121,7 +122,7 @@ container linked_list {
     Returns the removed payload pointer, or a null pointer when the list is empty:[ptr i0]
     /:
     @[self]
-    @[vname("__linked_list_pop_back")] @[abi]
+    @[abi]
     glob function pop_back(ptr linked_list self) -> ptr i0;
 
     :/ Unlinks and frees a specific node from the list.
@@ -132,7 +133,7 @@ container linked_list {
     Returns the removed payload pointer, or a null pointer when `block` is null:[ptr i0]
     /:
     @[self]
-    @[vname("__linked_list_remove")] @[abi]
+    @[abi]
     glob function remove(ptr linked_list self, ptr linked_list_block block) -> ptr i0;
 
     :/ Removes every node from the list.
@@ -142,7 +143,7 @@ container linked_list {
     Returns nothing:[i0]
     /:
     @[self]
-    @[vname("__linked_list_clear")] @[abi]
+    @[abi]
     glob function clear(ptr linked_list self) -> i0;
 
     :/ Clears and frees a heap-allocated list object.
@@ -152,7 +153,7 @@ container linked_list {
     Returns nothing:[i0]
     /:
     @[self]
-    @[vname("__linked_list_destroy")] @[abi]
+    @[abi]
     glob function destroy(ptr linked_list self) -> i0;
 
     :/ Returns the number of nodes in the list.
@@ -161,17 +162,17 @@ container linked_list {
     Returns the cached node count:[u64]
     /:
     @[self]
-    @[vname("__linked_list_size")] @[abi]
+    @[abi]
     glob function size(ptr linked_list self) -> u64;
 
     :/ Checks whether the list contains no nodes.
     - `self`:[ptr linked_list] - List to inspect.
 
-    Returns one when the list length is zero, otherwise zero:[i8]
+    Returns true when the list length is zero, otherwise false:[bool]
     /:
     @[self]
-    @[vname("__linked_list_empty")] @[abi]
-    glob function empty(ptr linked_list self) -> i8;
+    @[abi]
+    glob function empty(ptr linked_list self) -> bool;
 }
 
 #endif

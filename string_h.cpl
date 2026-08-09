@@ -3,6 +3,7 @@
 
 #include "platform_h.cpl"
 #include "stddef_h.cpl"
+#include "stdbool_h.cpl"
 
 :/ Copies a fixed number of bytes between non-overlapping memory regions.
 - `dst`:[ptr i0] - Pointer to the destination memory region or string.
@@ -365,7 +366,7 @@ container string {
     The object stores a duplicated buffer, so later changes to `data` do not update `body`.
     Returns a pointer to the newly allocated string object:[ptr string]
     /:
-    @[vname("__string_new")] @[abi]
+    @[abi]
     glob function new(ptr i8 data) -> ptr string;
 
     :/ Returns the length of the byte sequence owned by a string object.
@@ -374,7 +375,7 @@ container string {
     Returns the number of bytes before the terminating null byte:[i32]
     /:
     @[self]
-    @[vname("__string_len")] @[abi]
+    @[abi]
     glob function strlen(ptr string self) -> i32;
 
     :/ Checks whether two strings contain equal byte sequences.
@@ -382,11 +383,11 @@ container string {
     - `other`:[ptr string] - Other string object to compare.
 
     Compares `self.body` and `other.body` with `strcmp`.
-    Returns one when the strings are equal, otherwise zero:[i8]
+    Returns true when the strings are equal, otherwise false:[bool]
     /:
     @[self]
-    @[vname("__string_equals")] @[abi]
-    glob function equals(ptr string self, ptr string other) -> i8;
+    @[abi]
+    glob function equals(ptr string self, ptr string other) -> bool;
 
     :/ Releases the storage owned by a string object.
     - `self`:[ptr string] - Pointer to the current string object.
@@ -395,7 +396,7 @@ container string {
     Returns nothing:[i0]
     /:
     @[self]
-    @[vname("__string_destroy")] @[abi]
+    @[abi]
     glob function destroy(ptr string self) -> i0;
 
     :/ Writes the owned byte string to standard output.
@@ -405,7 +406,7 @@ container string {
     Returns nothing:[i0]
     /:
     @[self]
-    @[vname("__string_print")] @[abi]
+    @[abi]
     glob function print(ptr string self) -> i0;
 }
 #endif

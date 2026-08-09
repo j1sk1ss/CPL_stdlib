@@ -37,6 +37,6 @@ glob function stack::size(ptr stack self) -> u64 {
     self.data.size()
 }
 
-glob function stack::empty(ptr stack self) -> i8 {
+glob function stack::empty(ptr stack self) -> bool {
     self.data.empty()
 }

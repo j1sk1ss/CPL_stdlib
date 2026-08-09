@@ -2,6 +2,7 @@
 #define QUEUE_H_ 0
 
 #include "list_h.cpl"
+#include "stdbool_h.cpl"
 
 :/ FIFO queue of untyped caller-owned payload pointers.
 - `data`:[linked_list] - Embedded list used to store queue entries.
@@ -16,7 +17,7 @@ container queue {
 
     Returns a new queue, or a null pointer on allocation failure:[ptr queue]
     /:
-    @[vname("__queue_new")] @[abi]
+    @[abi]
     glob function new() -> ptr queue;
 
     :/ Initializes an already allocated queue object as empty.
@@ -26,7 +27,7 @@ container queue {
     Returns nothing:[i0]
     /:
     @[self]
-    @[vname("__queue_init")] @[abi]
+    @[abi]
     glob function init(ptr queue self) -> i0;
 
     :/ Pushes a payload pointer to the back of the queue.
@@ -37,7 +38,7 @@ container queue {
     Returns nothing:[i0]
     /:
     @[self]
-    @[vname("__queue_push")] @[abi]
+    @[abi]
     glob function push(ptr queue self, ptr i0 elem) -> i0;
 
     :/ Removes and returns the front payload pointer.
@@ -47,7 +48,7 @@ container queue {
     Returns the removed payload pointer, or a null pointer when the queue is empty:[ptr i0]
     /:
     @[self]
-    @[vname("__queue_pop")] @[abi]
+    @[abi]
     glob function pop(ptr queue self) -> ptr i0;
 
     :/ Reads the payload pointer at the front of the queue without removing it.
@@ -56,7 +57,7 @@ container queue {
     Returns the front payload pointer, or a null pointer when the queue is empty:[ptr i0]
     /:
     @[self]
-    @[vname("__queue_front")] @[abi]
+    @[abi]
     glob function front(ptr queue self) -> ptr i0;
 
     :/ Reads the payload pointer at the back of the queue without removing it.
@@ -65,7 +66,7 @@ container queue {
     Returns the back payload pointer, or a null pointer when the queue is empty:[ptr i0]
     /:
     @[self]
-    @[vname("__queue_back")] @[abi]
+    @[abi]
     glob function back(ptr queue self) -> ptr i0;
 
     :/ Removes every entry from the queue.
@@ -75,7 +76,7 @@ container queue {
     Returns nothing:[i0]
     /:
     @[self]
-    @[vname("__queue_clear")] @[abi]
+    @[abi]
     glob function clear(ptr queue self) -> i0;
 
     :/ Clears and frees a heap-allocated queue object.
@@ -85,7 +86,7 @@ container queue {
     Returns nothing:[i0]
     /:
     @[self]
-    @[vname("__queue_destroy")] @[abi]
+    @[abi]
     glob function destroy(ptr queue self) -> i0;
 
     :/ Returns the number of entries in the queue.
@@ -94,17 +95,17 @@ container queue {
     Returns the cached entry count:[u64]
     /:
     @[self]
-    @[vname("__queue_size")] @[abi]
+    @[abi]
     glob function size(ptr queue self) -> u64;
 
     :/ Checks whether the queue contains no entries.
     - `self`:[ptr queue] - Queue to inspect.
 
-    Returns one when the queue length is zero, otherwise zero:[i8]
+    Returns true when the queue length is zero, otherwise false:[bool]
     /:
     @[self]
-    @[vname("__queue_empty")] @[abi]
-    glob function empty(ptr queue self) -> i8;
+    @[abi]
+    glob function empty(ptr queue self) -> bool;
 }
 
 #endif

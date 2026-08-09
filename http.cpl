@@ -26,7 +26,7 @@ function _http_response_start(ptr http_response self) -> i0 {
     _http_write_status_line(self);
     _http_write_str(self.fd, ref "Connection: close\r\n");
     _http_write_str(self.fd, ref "Server: cpllib-http\r\n");
-    self.headers_started = 1;
+    self.headers_started = true;
 }
 
 function _http_content_type(ptr i8 path) -> ptr i8 {
@@ -86,8 +86,8 @@ function _http_file_exists(ptr i8 path) -> bool {
     true
 }
 
-function _http_join_path(ptr i8 out, i32 out_len, ptr i8 root, ptr i8 suffix) -> i8 {
-    if not out || out_len <= 0 || not root || not suffix; return 0;
+function _http_join_path(ptr i8 out, i32 out_len, ptr i8 root, ptr i8 suffix) -> bool {
+    if not out || out_len <= 0 || not root || not suffix; return false;
 
     i32 i = 0;
     while dref root && i < out_len - 1; {
@@ -105,17 +105,17 @@ function _http_join_path(ptr i8 out, i32 out_len, ptr i8 root, ptr i8 suffix) ->
     }
 
     out[i] = 0;
-    1
+    true
 }
 
-function _http_wait_readable(i32 fd) -> i8 {
+function _http_wait_readable(i32 fd) -> bool {
     c_pollfd pfd;
     pfd.fd = fd;
     pfd.events  = POLLIN as i16;
     pfd.revents = 0 as i16;
 
-    if poll(ref pfd, 1 as u64, 1000 as i32) <= 0; return 0;
-    1
+    if poll(ref pfd, 1 as u64, 1000 as i32) <= 0; return false;
+    true
 }
 
 function _http_zero_sockaddr(ptr http_sockaddr_in addr) -> i0 {
@@ -126,8 +126,8 @@ function _http_zero_sockaddr(ptr http_sockaddr_in addr) -> i0 {
 glob function http_response::init(ptr http_response self, i32 fd) -> i0 {
     self.fd              = fd;
     self.status_code     = 200;
-    self.headers_started = 0;
-    self.headers_done    = 0;
+    self.headers_started = false;
+    self.headers_done    = false;
 }
 
 glob function http_response::status(ptr http_response self, i32 code) -> i0 {
@@ -148,7 +148,7 @@ glob function http_response::end_headers(ptr http_response self) -> i0 {
     if self.headers_done; return;
     _http_response_start(self);
     _http_write_str(self.fd, ref "\r\n");
-    self.headers_done = 1;
+    self.headers_done = true;
 }
 
 glob function http_response::write(ptr http_response self, ptr i0 data, u64 len) -> i64 {
@@ -211,55 +211,55 @@ glob function http_server::init(ptr http_server self, ptr i8 ip, i32 port) -> i0
     self.port         = port;
     self.fd           = -1;
     self.backlog      = 16;
-    self.running      = 0;
+    self.running      = false;
     self.route_count  = 0;
     self.static_count = 0;
 }
 
-glob function http_server::route(ptr http_server self, ptr i8 method, ptr i8 path, ptr i0 handler) -> i8 {
-    if not method || not path || not handler; return 0;
-    if self.route_count >= HTTP_MAX_ROUTES;   return 0;
+glob function http_server::route(ptr http_server self, ptr i8 method, ptr i8 path, ptr i0 handler) -> bool {
+    if not method || not path || not handler; return false;
+    if self.route_count >= HTTP_MAX_ROUTES;   return false;
     self.routes[self.route_count].method  = method;
     self.routes[self.route_count].path    = path;
     self.routes[self.route_count].handler = handler;
     self.route_count += 1;
-    1
+    true
 }
 
-glob function http_server::get(ptr http_server self, ptr i8 path, ptr i0 handler) -> i8 {
+glob function http_server::get(ptr http_server self, ptr i8 path, ptr i0 handler) -> bool {
     self.route(ref "GET", path, handler)
 }
 
-glob function http_server::post(ptr http_server self, ptr i8 path, ptr i0 handler) -> i8 {
+glob function http_server::post(ptr http_server self, ptr i8 path, ptr i0 handler) -> bool {
     self.route(ref "POST", path, handler)
 }
 
-glob function http_server::static(ptr http_server self, ptr i8 prefix, ptr i8 root) -> i8 {
-    if not prefix || not root; return 0;
-    if self.static_count >= HTTP_MAX_STATIC_ROUTES; return 0;
+glob function http_server::static(ptr http_server self, ptr i8 prefix, ptr i8 root) -> bool {
+    if not prefix || not root; return false;
+    if self.static_count >= HTTP_MAX_STATIC_ROUTES; return false;
     self.static_routes[self.static_count].prefix = prefix;
     self.static_routes[self.static_count].root   = root;
     self.static_count += 1;
-    1
+    true
 }
 
-function _http_parse_request(i32 client_fd, ptr http_request req) -> i8 {
+function _http_parse_request(i32 client_fd, ptr http_request req) -> bool {
     req.method   = 0 as ptr i8;
     req.path     = 0 as ptr i8;
     req.query    = 0 as ptr i8;
     req.body     = 0 as ptr i8;
     req.body_len = 0;
 
-    if not _http_wait_readable(client_fd); return 0;
+    if not _http_wait_readable(client_fd); return false;
 
     i32 n = read(client_fd, ref req.raw, (HTTP_REQUEST_BUFFER_SIZE - 1) as u64) as i32;
-    if n <= 0; return 0 as i8;
+    if n <= 0; return false;
     req.raw[n] = 0 as i8;
 
     i32 i = 0;
     req.method = ref req.raw;
     while i < n && req.raw[i] != ' '; i += 1;
-    if i >= n; return 0;
+    if i >= n; return false;
     req.raw[i] = 0;
     i += 1;
 
@@ -273,7 +273,7 @@ function _http_parse_request(i32 client_fd, ptr http_request req) -> i8 {
         i += 1;
     }
 
-    if i >= n; return 0;
+    if i >= n; return false;
     req.raw[i] = 0;
 
     i = 0;
@@ -281,16 +281,16 @@ function _http_parse_request(i32 client_fd, ptr http_request req) -> i8 {
         if req.raw[i] == 13 as i8 && req.raw[i + 1] == 10 as i8 && req.raw[i + 2] == 13 as i8 && req.raw[i + 3] == 10 as i8; {
             req.body = req.raw + (i + 4) as ptr i8;
             req.body_len = (n - i - 4) as u64;
-            return 1;
+            return true;
         }
 
         i += 1;
     }
 
-    1
+    true
 }
 
-function _http_dispatch(ptr http_server self, ptr http_request req, ptr http_response res) -> i8 {
+function _http_dispatch(ptr http_server self, ptr http_request req, ptr http_response res) -> bool {
     i32 i = 0;
     while i < self.route_count; {
         if
@@ -298,7 +298,7 @@ function _http_dispatch(ptr http_server self, ptr http_request req, ptr http_res
             _http_streq(req.path, self.routes[i].path);
         {
             self.routes[i].handler(req, res);
-            return 1;
+            return true;
         }
 
         
@@ -306,27 +306,27 @@ function _http_dispatch(ptr http_server self, ptr http_request req, ptr http_res
     }
 
     if not _http_streq(req.method, ref "GET"); {
-        return 0;
+        return false;
     }
 
     i = 0;
     while i < self.static_count; {
         if _http_prefix_match(req.path, self.static_routes[i].prefix); {
             ptr i8 suffix = req.path + strlen(self.static_routes[i].prefix) as ptr i8;
-            if _http_contains_dotdot(suffix); return 0;
+            if _http_contains_dotdot(suffix); return false;
 
             arr path[HTTP_MAX_PATH, i8];
-            if not _http_join_path(ref path, HTTP_MAX_PATH as i32, self.static_routes[i].root, suffix); return 0;
+            if not _http_join_path(ref path, HTTP_MAX_PATH as i32, self.static_routes[i].root, suffix); return false;
             if _http_file_exists(ref path); {
                 res.file(ref path, _http_content_type(ref path));
-                return 1;
+                return true;
             }
         }
 
         i += 1;
     }
 
-    0
+    false
 }
 
 function _http_serve_client(ptr http_server self, i32 client_fd) -> i0 {
@@ -370,7 +370,7 @@ glob function http_server::listen(ptr http_server self) -> i32 {
         return -3;
     }
 
-    self.running = 1;
+    self.running = true;
     while self.running; {
         i32 client_fd = c_accept(self.fd, 0 as ptr i0, 0 as ptr i0);
         if client_fd >= 0; {
@@ -384,7 +384,7 @@ glob function http_server::listen(ptr http_server self) -> i32 {
 }
 
 glob function http_server::stop(ptr http_server self) -> i0 {
-    self.running = 0;
+    self.running = false;
 }
 
 glob function http_server::close(ptr http_server self) -> i0 {

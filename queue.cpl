@@ -41,6 +41,6 @@ glob function queue::size(ptr queue self) -> u64 {
     self.data.size()
 }
 
-glob function queue::empty(ptr queue self) -> i8 {
+glob function queue::empty(ptr queue self) -> bool {
     self.data.empty()
 }

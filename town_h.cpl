@@ -2,6 +2,7 @@
 #define CPL_TOWN_H_ 0
 
 #include "string_h.cpl"
+#include "stdbool_h.cpl"
 
 #define OREGON_TOWN_COUNT           40
 #define OREGON_TOWN_POPULATION_YEAR 2025
@@ -23,22 +24,22 @@ container town {
     Matching is case-sensitive and uses `strcmp`.
     Returns a pointer to a global `town` record, or a null pointer when not found:[ptr town]
     /:
-    @[vname("__oregon_town_find")] @[abi]
+    @[abi]
     glob function find(ptr i8 name) -> ptr town;
 
     :/ Checks whether an exact Oregon town name is known.
     - `name`:[ptr i8] - Null-terminated town name to search for.
 
-    Returns one when `find(name)` succeeds, otherwise zero:[i8]
+    Returns true when `find(name)` succeeds, otherwise false:[bool]
     /:
-    @[vname("__oregon_town_contains")] @[abi]
-    glob function contains(ptr i8 name) -> i8;
+    @[abi]
+    glob function contains(ptr i8 name) -> bool;
 
     :/ Returns the number of global Oregon town records in this library.
 
     Returns the fixed town count:[u64]
     /:
-    @[vname("__oregon_town_count")] @[abi]
+    @[abi]
     glob function count() -> u64;
 }
 

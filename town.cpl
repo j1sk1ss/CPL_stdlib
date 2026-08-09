@@ -88,8 +88,8 @@ glob function town::find(ptr i8 name) -> ptr town {
     0 as ptr town
 }
 
-glob function town::contains(ptr i8 name) -> i8 {
-    (town::find(name) != 0 as ptr town) as i8
+glob function town::contains(ptr i8 name) -> bool {
+    (town::find(name) != 0 as ptr town) as bool
 }
 
 glob function town::count() -> u64 {
