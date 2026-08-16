@@ -13,10 +13,10 @@
 Returns the destination pointer:[ptr i0]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_memcpy")] @[abi] extern function memcpy(ptr i0 dst, ptr i0 src, u64 n) -> ptr i0;
+@[vname("_memcpy")] @[abi] extern function memcpy(@[not_null] ptr i0 dst, @[not_null] ptr i0 src, u64 n) -> ptr i0;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function memcpy(ptr i0 dst, ptr i0 src, u64 n) -> ptr i0;
+@[abi] extern function memcpy(@[not_null] ptr i0 dst, @[not_null] ptr i0 src, u64 n) -> ptr i0;
 #endif
 
 :/ Copies a fixed number of bytes between possibly overlapping memory regions.
@@ -27,10 +27,10 @@ Returns the destination pointer:[ptr i0]
 Returns the destination pointer:[ptr i0]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_memmove")] @[abi] extern function memmove(ptr i0 dst, ptr i0 src, u64 n) -> ptr i0;
+@[vname("_memmove")] @[abi] extern function memmove(@[not_null] ptr i0 dst, @[not_null] ptr i0 src, u64 n) -> ptr i0;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function memmove(ptr i0 dst, ptr i0 src, u64 n) -> ptr i0;
+@[abi] extern function memmove(@[not_null] ptr i0 dst, @[not_null] ptr i0 src, u64 n) -> ptr i0;
 #endif
 
 :/ Fills a memory region with a repeated byte value.
@@ -41,10 +41,10 @@ Returns the destination pointer:[ptr i0]
 Returns the destination pointer:[ptr i0]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_memset")] @[abi] extern function memset(ptr i0 s, i32 c, u64 n) -> ptr i0;
+@[vname("_memset")] @[abi] extern function memset(@[not_null] ptr i0 s, i32 c, u64 n) -> ptr i0;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function memset(ptr i0 s, i32 c, u64 n) -> ptr i0;
+@[abi] extern function memset(@[not_null] ptr i0 s, i32 c, u64 n) -> ptr i0;
 #endif
 
 :/ Compares two memory regions byte by byte.
@@ -55,10 +55,10 @@ Returns the destination pointer:[ptr i0]
 Returns a value less than, equal to, or greater than zero according to lexical byte ordering:[i32]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_memcmp")] @[abi] extern function memcmp(ptr i0 a, ptr i0 b, u64 n) -> i32;
+@[vname("_memcmp")] @[abi] extern function memcmp(@[not_null] ptr i0 a, @[not_null] ptr i0 b, u64 n) -> i32;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function memcmp(ptr i0 a, ptr i0 b, u64 n) -> i32;
+@[abi] extern function memcmp(@[not_null] ptr i0 a, @[not_null] ptr i0 b, u64 n) -> i32;
 #endif
 
 :/ Searches a memory region for the first occurrence of a byte value.
@@ -69,10 +69,10 @@ Returns a value less than, equal to, or greater than zero according to lexical b
 Returns a pointer to the matching byte, or a null pointer when not found:[ptr i0]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_memchr")] @[abi] extern function memchr(ptr i0 s, i32 c, u64 n) -> ptr i0;
+@[vname("_memchr")] @[abi] extern function memchr(@[not_null] ptr i0 s, i32 c, u64 n) -> ptr i0;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function memchr(ptr i0 s, i32 c, u64 n) -> ptr i0;
+@[abi] extern function memchr(@[not_null] ptr i0 s, i32 c, u64 n) -> ptr i0;
 #endif
 
 :/ Returns the length of a null-terminated byte string.
@@ -81,10 +81,10 @@ Returns a pointer to the matching byte, or a null pointer when not found:[ptr i0
 Returns the number of bytes before the terminating null byte:[u64]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_strlen")] @[abi] extern function strlen(ptr i8 s) -> u64;
+@[vname("_strlen")] @[abi] extern function strlen(@[not_null] ptr i8 s) -> u64;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function strlen(ptr i8 s) -> u64;
+@[abi] extern function strlen(@[not_null] ptr i8 s) -> u64;
 #endif
 
 :/ Returns the length of a byte string up to a specified limit.
@@ -94,10 +94,10 @@ Returns the number of bytes before the terminating null byte:[u64]
 Returns the number of bytes before the terminator or the supplied limit, whichever comes first:[u64]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_strnlen")] @[abi] extern function strnlen(ptr i8 s, u64 max_len) -> u64;
+@[vname("_strnlen")] @[abi] extern function strnlen(@[not_null] ptr i8 s, u64 max_len) -> u64;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function strnlen(ptr i8 s, u64 max_len) -> u64;
+@[abi] extern function strnlen(@[not_null] ptr i8 s, u64 max_len) -> u64;
 #endif
 
 :/ Copies a null-terminated byte string.
@@ -107,10 +107,10 @@ Returns the number of bytes before the terminator or the supplied limit, whichev
 Returns the destination pointer:[ptr i8]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_strcpy")] @[abi] extern function strcpy(ptr i8 dst, ptr i8 src) -> ptr i8;
+@[vname("_strcpy")] @[abi] extern function strcpy(@[not_null] ptr i8 dst, @[not_null] ptr i8 src) -> ptr i8;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function strcpy(ptr i8 dst, ptr i8 src) -> ptr i8;
+@[abi] extern function strcpy(@[not_null] ptr i8 dst, @[not_null] ptr i8 src) -> ptr i8;
 #endif
 
 :/ Copies at most a specified number of bytes from a byte string.
@@ -121,10 +121,10 @@ Returns the destination pointer:[ptr i8]
 Returns the destination pointer:[ptr i8]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_strncpy")] @[abi] extern function strncpy(ptr i8 dst, ptr i8 src, u64 n) -> ptr i8;
+@[vname("_strncpy")] @[abi] extern function strncpy(@[not_null] ptr i8 dst, @[not_null] ptr i8 src, u64 n) -> ptr i8;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function strncpy(ptr i8 dst, ptr i8 src, u64 n) -> ptr i8;
+@[abi] extern function strncpy(@[not_null] ptr i8 dst, @[not_null] ptr i8 src, u64 n) -> ptr i8;
 #endif
 
 :/ Appends a null-terminated byte string to another byte string.
@@ -134,10 +134,10 @@ Returns the destination pointer:[ptr i8]
 Returns the destination pointer:[ptr i8]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_strcat")] @[abi] extern function strcat(ptr i8 dst, ptr i8 src) -> ptr i8;
+@[vname("_strcat")] @[abi] extern function strcat(@[not_null] ptr i8 dst, @[not_null] ptr i8 src) -> ptr i8;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function strcat(ptr i8 dst, ptr i8 src) -> ptr i8;
+@[abi] extern function strcat(@[not_null] ptr i8 dst, @[not_null] ptr i8 src) -> ptr i8;
 #endif
 
 :/ Appends at most a specified number of bytes from one string to another.
@@ -148,10 +148,10 @@ Returns the destination pointer:[ptr i8]
 Returns the destination pointer:[ptr i8]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_strncat")] @[abi] extern function strncat(ptr i8 dst, ptr i8 src, u64 n) -> ptr i8;
+@[vname("_strncat")] @[abi] extern function strncat(@[not_null] ptr i8 dst, @[not_null] ptr i8 src, u64 n) -> ptr i8;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function strncat(ptr i8 dst, ptr i8 src, u64 n) -> ptr i8;
+@[abi] extern function strncat(@[not_null] ptr i8 dst, @[not_null] ptr i8 src, u64 n) -> ptr i8;
 #endif
 
 :/ Compares two null-terminated byte strings lexicographically.
@@ -161,10 +161,10 @@ Returns the destination pointer:[ptr i8]
 Returns a value less than, equal to, or greater than zero according to lexical ordering:[i32]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_strcmp")] @[abi] extern function strcmp(ptr i8 a, ptr i8 b) -> i32;
+@[vname("_strcmp")] @[abi] extern function strcmp(@[not_null] ptr i8 a, @[not_null] ptr i8 b) -> i32;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function strcmp(ptr i8 a, ptr i8 b) -> i32;
+@[abi] extern function strcmp(@[not_null] ptr i8 a, @[not_null] ptr i8 b) -> i32;
 #endif
 
 :/ Compares at most a specified number of bytes from two strings.
@@ -175,10 +175,10 @@ Returns a value less than, equal to, or greater than zero according to lexical o
 Returns a value less than, equal to, or greater than zero according to lexical ordering:[i32]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_strncmp")] @[abi] extern function strncmp(ptr i8 a, ptr i8 b, u64 n) -> i32;
+@[vname("_strncmp")] @[abi] extern function strncmp(@[not_null] ptr i8 a, @[not_null] ptr i8 b, u64 n) -> i32;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function strncmp(ptr i8 a, ptr i8 b, u64 n) -> i32;
+@[abi] extern function strncmp(@[not_null] ptr i8 a, @[not_null] ptr i8 b, u64 n) -> i32;
 #endif
 
 :/ Finds the first occurrence of a character in a byte string.
@@ -188,10 +188,10 @@ Returns a value less than, equal to, or greater than zero according to lexical o
 Returns a pointer to the first matching character, or a null pointer:[ptr i8]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_strchr")] @[abi] extern function strchr(ptr i8 s, i32 c) -> ptr i8;
+@[vname("_strchr")] @[abi] extern function strchr(@[not_null] ptr i8 s, i32 c) -> ptr i8;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function strchr(ptr i8 s, i32 c) -> ptr i8;
+@[abi] extern function strchr(@[not_null] ptr i8 s, i32 c) -> ptr i8;
 #endif
 
 :/ Finds the last occurrence of a character in a byte string.
@@ -201,10 +201,10 @@ Returns a pointer to the first matching character, or a null pointer:[ptr i8]
 Returns a pointer to the last matching character, or a null pointer:[ptr i8]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_strrchr")] @[abi] extern function strrchr(ptr i8 s, i32 c) -> ptr i8;
+@[vname("_strrchr")] @[abi] extern function strrchr(@[not_null] ptr i8 s, i32 c) -> ptr i8;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function strrchr(ptr i8 s, i32 c) -> ptr i8;
+@[abi] extern function strrchr(@[not_null] ptr i8 s, i32 c) -> ptr i8;
 #endif
 
 :/ Finds the first occurrence of a substring.
@@ -214,10 +214,10 @@ Returns a pointer to the last matching character, or a null pointer:[ptr i8]
 Returns a pointer to the first matching substring, or a null pointer:[ptr i8]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_strstr")] @[abi] extern function strstr(ptr i8 haystack, ptr i8 needle) -> ptr i8;
+@[vname("_strstr")] @[abi] extern function strstr(@[not_null] ptr i8 haystack, @[not_null] ptr i8 needle) -> ptr i8;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function strstr(ptr i8 haystack, ptr i8 needle) -> ptr i8;
+@[abi] extern function strstr(@[not_null] ptr i8 haystack, @[not_null] ptr i8 needle) -> ptr i8;
 #endif
 
 :/ Finds the first character in a string that belongs to a specified set.
@@ -227,10 +227,10 @@ Returns a pointer to the first matching substring, or a null pointer:[ptr i8]
 Returns a pointer to the first accepted character, or a null pointer:[ptr i8]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_strpbrk")] @[abi] extern function strpbrk(ptr i8 s, ptr i8 accept) -> ptr i8;
+@[vname("_strpbrk")] @[abi] extern function strpbrk(@[not_null] ptr i8 s, @[not_null] ptr i8 accept) -> ptr i8;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function strpbrk(ptr i8 s, ptr i8 accept) -> ptr i8;
+@[abi] extern function strpbrk(@[not_null] ptr i8 s, @[not_null] ptr i8 accept) -> ptr i8;
 #endif
 
 :/ Returns the length of the initial segment containing only accepted characters.
@@ -240,10 +240,10 @@ Returns a pointer to the first accepted character, or a null pointer:[ptr i8]
 Returns the length of the accepted initial segment:[u64]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_strspn")] @[abi] extern function strspn(ptr i8 s, ptr i8 accept) -> u64;
+@[vname("_strspn")] @[abi] extern function strspn(@[not_null] ptr i8 s, @[not_null] ptr i8 accept) -> u64;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function strspn(ptr i8 s, ptr i8 accept) -> u64;
+@[abi] extern function strspn(@[not_null] ptr i8 s, @[not_null] ptr i8 accept) -> u64;
 #endif
 
 :/ Returns the length of the initial segment containing no rejected characters.
@@ -253,10 +253,10 @@ Returns the length of the accepted initial segment:[u64]
 Returns the length of the non-rejected initial segment:[u64]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_strcspn")] @[abi] extern function strcspn(ptr i8 s, ptr i8 reject) -> u64;
+@[vname("_strcspn")] @[abi] extern function strcspn(@[not_null] ptr i8 s, @[not_null] ptr i8 reject) -> u64;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function strcspn(ptr i8 s, ptr i8 reject) -> u64;
+@[abi] extern function strcspn(@[not_null] ptr i8 s, @[not_null] ptr i8 reject) -> u64;
 #endif
 
 :/ Compares two strings using the active locale collation rules.
@@ -266,10 +266,10 @@ Returns the length of the non-rejected initial segment:[u64]
 Returns a value less than, equal to, or greater than zero according to locale collation:[i32]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_strcoll")] @[abi] extern function strcoll(ptr i8 a, ptr i8 b) -> i32;
+@[vname("_strcoll")] @[abi] extern function strcoll(@[not_null] ptr i8 a, @[not_null] ptr i8 b) -> i32;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function strcoll(ptr i8 a, ptr i8 b) -> i32;
+@[abi] extern function strcoll(@[not_null] ptr i8 a, @[not_null] ptr i8 b) -> i32;
 #endif
 
 :/ Transforms a string into a form suitable for locale-aware comparison.
@@ -280,10 +280,10 @@ Returns a value less than, equal to, or greater than zero according to locale co
 Returns the length of the fully transformed string, excluding the terminator:[u64]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_strxfrm")] @[abi] extern function strxfrm(ptr i8 dst, ptr i8 src, u64 n) -> u64;
+@[vname("_strxfrm")] @[abi] extern function strxfrm(ptr i8 dst, @[not_null] ptr i8 src, u64 n) -> u64;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function strxfrm(ptr i8 dst, ptr i8 src, u64 n) -> u64;
+@[abi] extern function strxfrm(ptr i8 dst, @[not_null] ptr i8 src, u64 n) -> u64;
 #endif
 
 :/ Splits a string into tokens using delimiter characters.
@@ -293,10 +293,10 @@ Returns the length of the fully transformed string, excluding the terminator:[u6
 Returns a pointer to the next token, or a null pointer when no token remains:[ptr i8]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_strtok")] @[abi] extern function strtok(ptr i8 s, ptr i8 delim) -> ptr i8;
+@[vname("_strtok")] @[abi] extern function strtok(ptr i8 s, @[not_null] ptr i8 delim) -> ptr i8;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function strtok(ptr i8 s, ptr i8 delim) -> ptr i8;
+@[abi] extern function strtok(ptr i8 s, @[not_null] ptr i8 delim) -> ptr i8;
 #endif
 
 :/ Splits a string into tokens using caller-managed state.
@@ -307,10 +307,10 @@ Returns a pointer to the next token, or a null pointer when no token remains:[pt
 Returns a pointer to the next token, or a null pointer when no token remains:[ptr i8]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_strtok_r")] @[abi] extern function strtok_r(ptr i8 s, ptr i8 delim, ptr ptr i8 state) -> ptr i8;
+@[vname("_strtok_r")] @[abi] extern function strtok_r(ptr i8 s, @[not_null] ptr i8 delim, @[not_null] ptr ptr i8 state) -> ptr i8;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function strtok_r(ptr i8 s, ptr i8 delim, ptr ptr i8 state) -> ptr i8;
+@[abi] extern function strtok_r(ptr i8 s, @[not_null] ptr i8 delim, @[not_null] ptr ptr i8 state) -> ptr i8;
 #endif
 
 :/ Returns a textual description of an error code.
@@ -331,10 +331,10 @@ Returns a pointer to the error-description string:[ptr i8]
 Returns a pointer to the allocated duplicate, or a null pointer on failure:[ptr i8]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_strdup")] @[abi] extern function strdup(ptr i8 p) -> ptr i8;
+@[vname("_strdup")] @[abi] extern function strdup(@[not_null] ptr i8 p) -> ptr i8;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function strdup(ptr i8 p) -> ptr i8;
+@[abi] extern function strdup(@[not_null] ptr i8 p) -> ptr i8;
 #endif
 
 :/ Allocates and returns a length-limited duplicate of a byte string.
@@ -344,10 +344,10 @@ Returns a pointer to the allocated duplicate, or a null pointer on failure:[ptr 
 Returns a pointer to the allocated duplicate, or a null pointer on failure:[ptr i8]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_strndup")] @[abi] extern function strndup(ptr i8 p, u64 n) -> ptr i8;
+@[vname("_strndup")] @[abi] extern function strndup(@[not_null] ptr i8 p, u64 n) -> ptr i8;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function strndup(ptr i8 p, u64 n) -> ptr i8;
+@[abi] extern function strndup(@[not_null] ptr i8 p, u64 n) -> ptr i8;
 #endif
 
 #ifndef CCPL_NO_CONTAINER_STRINGS

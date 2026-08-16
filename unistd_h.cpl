@@ -31,10 +31,10 @@
 Returns the number of bytes read, zero at end of file, or -1 on failure:[i64]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_read")] @[abi] extern function read(i32 fd, ptr i0 buf, u64 count) -> i64;
+@[vname("_read")] @[abi] extern function read(i32 fd, @[not_null] ptr i0 buf, u64 count) -> i64;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function read(i32 fd, ptr i0 buf, u64 count) -> i64;
+@[abi] extern function read(i32 fd, @[not_null] ptr i0 buf, u64 count) -> i64;
 #endif
 
 :/ Writes bytes to a file descriptor.
@@ -45,10 +45,10 @@ Returns the number of bytes read, zero at end of file, or -1 on failure:[i64]
 Returns the number of bytes written, or -1 on failure:[i64]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_write")] @[abi] extern function write(i32 fd, ptr i0 buf, u64 count) -> i64;
+@[vname("_write")] @[abi] extern function write(i32 fd, @[not_null] ptr i0 buf, u64 count) -> i64;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function write(i32 fd, ptr i0 buf, u64 count) -> i64;
+@[abi] extern function write(i32 fd, @[not_null] ptr i0 buf, u64 count) -> i64;
 #endif
 
 :/ Closes an open file descriptor.
@@ -83,10 +83,10 @@ Returns the resulting file offset on success, otherwise -1:[i64]
 Returns zero on success, otherwise -1:[i32]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_unlink")] @[abi] extern function unlink(ptr i8 path) -> i32;
+@[vname("_unlink")] @[abi] extern function unlink(@[not_null] ptr i8 path) -> i32;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function unlink(ptr i8 path) -> i32;
+@[abi] extern function unlink(@[not_null] ptr i8 path) -> i32;
 #endif
 
 :/ Removes an empty directory.
@@ -95,10 +95,10 @@ Returns zero on success, otherwise -1:[i32]
 Returns zero on success, otherwise -1:[i32]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_rmdir")] @[abi] extern function rmdir(ptr i8 path) -> i32;
+@[vname("_rmdir")] @[abi] extern function rmdir(@[not_null] ptr i8 path) -> i32;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function rmdir(ptr i8 path) -> i32;
+@[abi] extern function rmdir(@[not_null] ptr i8 path) -> i32;
 #endif
 
 :/ Changes the process working directory.
@@ -107,10 +107,10 @@ Returns zero on success, otherwise -1:[i32]
 Returns zero on success, otherwise -1:[i32]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_chdir")] @[abi] extern function chdir(ptr i8 path) -> i32;
+@[vname("_chdir")] @[abi] extern function chdir(@[not_null] ptr i8 path) -> i32;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function chdir(ptr i8 path) -> i32;
+@[abi] extern function chdir(@[not_null] ptr i8 path) -> i32;
 #endif
 
 :/ Retrieves the absolute path of the process working directory.
@@ -133,10 +133,10 @@ Returns the supplied buffer on success, otherwise a null pointer:[ptr i8]
 Returns zero when access is permitted, otherwise -1:[i32]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_access")] @[abi] extern function access(ptr i8 path, i32 mode) -> i32;
+@[vname("_access")] @[abi] extern function access(@[not_null] ptr i8 path, i32 mode) -> i32;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function access(ptr i8 path, i32 mode) -> i32;
+@[abi] extern function access(@[not_null] ptr i8 path, i32 mode) -> i32;
 #endif
 
 :/ Duplicates a file descriptor.
@@ -170,10 +170,10 @@ Returns the selected new file descriptor on success, otherwise -1:[i32]
 Returns zero on success, otherwise -1:[i32]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_pipe")] @[abi] extern function pipe(ptr i32 pipefd) -> i32;
+@[vname("_pipe")] @[abi] extern function pipe(@[not_null] ptr i32 pipefd) -> i32;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function pipe(ptr i32 pipefd) -> i32;
+@[abi] extern function pipe(@[not_null] ptr i32 pipefd) -> i32;
 #endif
 #ifndef CCPL_MACHO64
 
@@ -184,10 +184,10 @@ Returns zero on success, otherwise -1:[i32]
 Returns zero on success, otherwise -1:[i32]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_pipe2")] @[abi] extern function pipe2(ptr i32 pipefd, i32 flags) -> i32;
+@[vname("_pipe2")] @[abi] extern function pipe2(@[not_null] ptr i32 pipefd, i32 flags) -> i32;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function pipe2(ptr i32 pipefd, i32 flags) -> i32;
+@[abi] extern function pipe2(@[not_null] ptr i32 pipefd, i32 flags) -> i32;
 #endif
 #endif
 
@@ -222,10 +222,10 @@ Returns nothing because the function does not return normally:[i0]
 Returns -1 on failure because successful execution does not return:[i32]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_execve")] @[abi] extern function execve(ptr i8 path, ptr ptr i8 argv, ptr ptr i8 envp) -> i32;
+@[vname("_execve")] @[abi] extern function execve(@[not_null] ptr i8 path, @[not_null] ptr ptr i8 argv, @[not_null] ptr ptr i8 envp) -> i32;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function execve(ptr i8 path, ptr ptr i8 argv, ptr ptr i8 envp) -> i32;
+@[abi] extern function execve(@[not_null] ptr i8 path, @[not_null] ptr ptr i8 argv, @[not_null] ptr ptr i8 envp) -> i32;
 #endif
 
 :/ Replaces the current process image with a new program and argument vector.
@@ -235,10 +235,10 @@ Returns -1 on failure because successful execution does not return:[i32]
 Returns -1 on failure because successful execution does not return:[i32]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_execv")] @[abi] extern function execv(ptr i8 path, ptr ptr i8 argv) -> i32;
+@[vname("_execv")] @[abi] extern function execv(@[not_null] ptr i8 path, @[not_null] ptr ptr i8 argv) -> i32;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function execv(ptr i8 path, ptr ptr i8 argv) -> i32;
+@[abi] extern function execv(@[not_null] ptr i8 path, @[not_null] ptr ptr i8 argv) -> i32;
 #endif
 
 :/ Replaces the current process image with a new program and variadic argument list.
@@ -249,10 +249,10 @@ Returns -1 on failure because successful execution does not return:[i32]
 Returns -1 on failure because successful execution does not return:[i32]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_execl")] @[abi] extern function execl(ptr i8 path, ptr i8 arg0, ...) -> i32;
+@[vname("_execl")] @[abi] extern function execl(@[not_null] ptr i8 path, @[not_null] ptr i8 arg0, ...) -> i32;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function execl(ptr i8 path, ptr i8 arg0, ...) -> i32;
+@[abi] extern function execl(@[not_null] ptr i8 path, @[not_null] ptr i8 arg0, ...) -> i32;
 #endif
 
 :/ Returns the process identifier of the calling process.

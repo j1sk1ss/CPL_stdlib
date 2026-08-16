@@ -27,10 +27,10 @@ Returns the absolute value:[i64]
 Returns the converted signed integer value:[i64]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_strtoimax")] @[abi] extern function strtoimax(ptr i8 s, ptr ptr i8 endptr, i32 base) -> i64;
+@[vname("_strtoimax")] @[abi] extern function strtoimax(@[not_null] ptr i8 s, ptr ptr i8 endptr, i32 base) -> i64;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function strtoimax(ptr i8 s, ptr ptr i8 endptr, i32 base) -> i64;
+@[abi] extern function strtoimax(@[not_null] ptr i8 s, ptr ptr i8 endptr, i32 base) -> i64;
 #endif
 
 :/ Converts a byte string to the widest unsigned integer type.
@@ -41,10 +41,10 @@ Returns the converted signed integer value:[i64]
 Returns the converted unsigned integer value:[u64]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_strtoumax")] @[abi] extern function strtoumax(ptr i8 s, ptr ptr i8 endptr, i32 base) -> u64;
+@[vname("_strtoumax")] @[abi] extern function strtoumax(@[not_null] ptr i8 s, ptr ptr i8 endptr, i32 base) -> u64;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function strtoumax(ptr i8 s, ptr ptr i8 endptr, i32 base) -> u64;
+@[abi] extern function strtoumax(@[not_null] ptr i8 s, ptr ptr i8 endptr, i32 base) -> u64;
 #endif
 
 #endif

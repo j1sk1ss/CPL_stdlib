@@ -60,10 +60,10 @@ Returns the elapsed time in seconds:[f64]
 Returns the converted calendar time, or -1 when it cannot be represented:[i64]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_mktime")] @[abi] extern function mktime(ptr c_tm tm) -> i64;
+@[vname("_mktime")] @[abi] extern function mktime(@[not_null] ptr c_tm tm) -> i64;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function mktime(ptr c_tm tm) -> i64;
+@[abi] extern function mktime(@[not_null] ptr c_tm tm) -> i64;
 #endif
 
 :/ Converts a broken-down time to a textual representation.
@@ -72,46 +72,46 @@ Returns the converted calendar time, or -1 when it cannot be represented:[i64]
 Returns a pointer to a textual time representation:[ptr i8]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_asctime")] @[abi] extern function asctime(ptr c_tm tm) -> ptr i8;
+@[vname("_asctime")] @[abi] extern function asctime(@[not_null] ptr c_tm tm) -> ptr i8;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function asctime(ptr c_tm tm) -> ptr i8;
+@[abi] extern function asctime(@[not_null] ptr c_tm tm) -> ptr i8;
 #endif
 
 :/ Converts calendar time to a textual local-time representation.
-- `timer`:[ptr i64] - Optional output pointer receiving calendar time, or pointer to input calendar time.
+- `timer`:[ptr i64] - Pointer to the input calendar time.
 
 Returns a pointer to a textual local-time representation:[ptr i8]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_ctime")] @[abi] extern function ctime(ptr i64 timer) -> ptr i8;
+@[vname("_ctime")] @[abi] extern function ctime(@[not_null] ptr i64 timer) -> ptr i8;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function ctime(ptr i64 timer) -> ptr i8;
+@[abi] extern function ctime(@[not_null] ptr i64 timer) -> ptr i8;
 #endif
 
 :/ Converts calendar time to broken-down Coordinated Universal Time.
-- `timer`:[ptr i64] - Optional output pointer receiving calendar time, or pointer to input calendar time.
+- `timer`:[ptr i64] - Pointer to the input calendar time.
 
 Returns a pointer to broken-down UTC, or a null pointer on failure:[ptr c_tm]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_gmtime")] @[abi] extern function gmtime(ptr i64 timer) -> ptr c_tm;
+@[vname("_gmtime")] @[abi] extern function gmtime(@[not_null] ptr i64 timer) -> ptr c_tm;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function gmtime(ptr i64 timer) -> ptr c_tm;
+@[abi] extern function gmtime(@[not_null] ptr i64 timer) -> ptr c_tm;
 #endif
 
 :/ Converts calendar time to broken-down local time.
-- `timer`:[ptr i64] - Optional output pointer receiving calendar time, or pointer to input calendar time.
+- `timer`:[ptr i64] - Pointer to the input calendar time.
 
 Returns a pointer to broken-down local time, or a null pointer on failure:[ptr c_tm]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_localtime")] @[abi] extern function localtime(ptr i64 timer) -> ptr c_tm;
+@[vname("_localtime")] @[abi] extern function localtime(@[not_null] ptr i64 timer) -> ptr c_tm;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function localtime(ptr i64 timer) -> ptr c_tm;
+@[abi] extern function localtime(@[not_null] ptr i64 timer) -> ptr c_tm;
 #endif
 
 :/ Formats a broken-down time according to a format string.
@@ -123,10 +123,10 @@ Returns a pointer to broken-down local time, or a null pointer on failure:[ptr c
 Returns the number of bytes written excluding the terminator, or zero when the buffer is insufficient:[u64]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_strftime")] @[abi] extern function strftime(ptr i8 s, u64 max_size, ptr i8 format, ptr c_tm tm) -> u64;
+@[vname("_strftime")] @[abi] extern function strftime(@[not_null] ptr i8 s, u64 max_size, @[not_null] ptr i8 format, @[not_null] ptr c_tm tm) -> u64;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function strftime(ptr i8 s, u64 max_size, ptr i8 format, ptr c_tm tm) -> u64;
+@[abi] extern function strftime(@[not_null] ptr i8 s, u64 max_size, @[not_null] ptr i8 format, @[not_null] ptr c_tm tm) -> u64;
 #endif
 
 :/ Reads the current value of a specified clock.
@@ -136,10 +136,10 @@ Returns the number of bytes written excluding the terminator, or zero when the b
 Returns zero on success, otherwise -1:[i32]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_clock_gettime")] @[abi] extern function clock_gettime(i32 clock_id, ptr c_timespec time) -> i32;
+@[vname("_clock_gettime")] @[abi] extern function clock_gettime(i32 clock_id, @[not_null] ptr c_timespec time) -> i32;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function clock_gettime(i32 clock_id, ptr c_timespec time) -> i32;
+@[abi] extern function clock_gettime(i32 clock_id, @[not_null] ptr c_timespec time) -> i32;
 #endif
 
 :/ Retrieves the resolution of a specified clock.
@@ -162,10 +162,10 @@ Returns zero on success, otherwise -1:[i32]
 Returns zero after the full interval, otherwise -1 when interrupted or failed:[i32]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_nanosleep")] @[abi] extern function nanosleep(ptr c_timespec duration, ptr c_timespec remaining) -> i32;
+@[vname("_nanosleep")] @[abi] extern function nanosleep(@[not_null] ptr c_timespec duration, ptr c_timespec remaining) -> i32;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function nanosleep(ptr c_timespec duration, ptr c_timespec remaining) -> i32;
+@[abi] extern function nanosleep(@[not_null] ptr c_timespec duration, ptr c_timespec remaining) -> i32;
 #endif
 
 #endif

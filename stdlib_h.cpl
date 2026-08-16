@@ -68,10 +68,10 @@ Returns a pointer to the aligned block, or a null pointer on failure:[ptr i0]
 Returns zero on success, otherwise an error number:[i32]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_posix_memalign")] @[abi] extern function posix_memalign(ptr ptr i0 result, u64 alignment, u64 size) -> i32;
+@[vname("_posix_memalign")] @[abi] extern function posix_memalign(@[not_null] ptr ptr i0 result, u64 alignment, u64 size) -> i32;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function posix_memalign(ptr ptr i0 result, u64 alignment, u64 size) -> i32;
+@[abi] extern function posix_memalign(@[not_null] ptr ptr i0 result, u64 alignment, u64 size) -> i32;
 #endif
 
 :/ Releases a previously allocated block of memory.
@@ -115,10 +115,10 @@ Returns nothing because the function does not return normally:[i0]
 Returns zero on success, otherwise a nonzero value:[i32]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_atexit")] @[abi] extern function atexit(ptr i0 func) -> i32;
+@[vname("_atexit")] @[abi] extern function atexit(@[not_null] ptr i0 func) -> i32;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function atexit(ptr i0 func) -> i32;
+@[abi] extern function atexit(@[not_null] ptr i0 func) -> i32;
 #endif
 
 :/ Passes a command to the host command processor.
@@ -139,10 +139,10 @@ Returns a command-processor-dependent status value:[i32]
 Returns a pointer to the variable value, or a null pointer when not found:[ptr i8]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_getenv")] @[abi] extern function getenv(ptr i8 name) -> ptr i8;
+@[vname("_getenv")] @[abi] extern function getenv(@[not_null] ptr i8 name) -> ptr i8;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function getenv(ptr i8 name) -> ptr i8;
+@[abi] extern function getenv(@[not_null] ptr i8 name) -> ptr i8;
 #endif
 
 :/ Converts a byte string to a signed integer.
@@ -151,10 +151,10 @@ Returns a pointer to the variable value, or a null pointer when not found:[ptr i
 Returns the converted integer value:[i32]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_atoi")] @[abi] extern function atoi(ptr i8 s) -> i32;
+@[vname("_atoi")] @[abi] extern function atoi(@[not_null] ptr i8 s) -> i32;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function atoi(ptr i8 s) -> i32;
+@[abi] extern function atoi(@[not_null] ptr i8 s) -> i32;
 #endif
 
 :/ Converts a byte string to a signed long integer.
@@ -163,10 +163,10 @@ Returns the converted integer value:[i32]
 Returns the converted long integer value:[i64]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_atol")] @[abi] extern function atol(ptr i8 s) -> i64;
+@[vname("_atol")] @[abi] extern function atol(@[not_null] ptr i8 s) -> i64;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function atol(ptr i8 s) -> i64;
+@[abi] extern function atol(@[not_null] ptr i8 s) -> i64;
 #endif
 
 :/ Converts a byte string to a signed long long integer.
@@ -175,10 +175,10 @@ Returns the converted long integer value:[i64]
 Returns the converted long long integer value:[i64]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_atoll")] @[abi] extern function atoll(ptr i8 s) -> i64;
+@[vname("_atoll")] @[abi] extern function atoll(@[not_null] ptr i8 s) -> i64;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function atoll(ptr i8 s) -> i64;
+@[abi] extern function atoll(@[not_null] ptr i8 s) -> i64;
 #endif
 
 :/ Converts a byte string to a signed long integer using a specified base.
@@ -189,10 +189,10 @@ Returns the converted long long integer value:[i64]
 Returns the converted signed long integer value:[i64]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_strtol")] @[abi] extern function strtol(ptr i8 s, ptr ptr i8 endptr, i32 base) -> i64;
+@[vname("_strtol")] @[abi] extern function strtol(@[not_null] ptr i8 s, ptr ptr i8 endptr, i32 base) -> i64;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function strtol(ptr i8 s, ptr ptr i8 endptr, i32 base) -> i64;
+@[abi] extern function strtol(@[not_null] ptr i8 s, ptr ptr i8 endptr, i32 base) -> i64;
 #endif
 
 :/ Converts a byte string to a signed long long integer using a specified base.
@@ -203,10 +203,10 @@ Returns the converted signed long integer value:[i64]
 Returns the converted signed long long integer value:[i64]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_strtoll")] @[abi] extern function strtoll(ptr i8 s, ptr ptr i8 endptr, i32 base) -> i64;
+@[vname("_strtoll")] @[abi] extern function strtoll(@[not_null] ptr i8 s, ptr ptr i8 endptr, i32 base) -> i64;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function strtoll(ptr i8 s, ptr ptr i8 endptr, i32 base) -> i64;
+@[abi] extern function strtoll(@[not_null] ptr i8 s, ptr ptr i8 endptr, i32 base) -> i64;
 #endif
 
 :/ Converts a byte string to an unsigned long integer using a specified base.
@@ -217,10 +217,10 @@ Returns the converted signed long long integer value:[i64]
 Returns the converted unsigned long integer value:[u64]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_strtoul")] @[abi] extern function strtoul(ptr i8 s, ptr ptr i8 endptr, i32 base) -> u64;
+@[vname("_strtoul")] @[abi] extern function strtoul(@[not_null] ptr i8 s, ptr ptr i8 endptr, i32 base) -> u64;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function strtoul(ptr i8 s, ptr ptr i8 endptr, i32 base) -> u64;
+@[abi] extern function strtoul(@[not_null] ptr i8 s, ptr ptr i8 endptr, i32 base) -> u64;
 #endif
 
 :/ Converts a byte string to an unsigned long long integer using a specified base.
@@ -231,10 +231,10 @@ Returns the converted unsigned long integer value:[u64]
 Returns the converted unsigned long long integer value:[u64]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_strtoull")] @[abi] extern function strtoull(ptr i8 s, ptr ptr i8 endptr, i32 base) -> u64;
+@[vname("_strtoull")] @[abi] extern function strtoull(@[not_null] ptr i8 s, ptr ptr i8 endptr, i32 base) -> u64;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function strtoull(ptr i8 s, ptr ptr i8 endptr, i32 base) -> u64;
+@[abi] extern function strtoull(@[not_null] ptr i8 s, ptr ptr i8 endptr, i32 base) -> u64;
 #endif
 
 :/ Converts a byte string to a double-precision floating-point value.
@@ -244,10 +244,10 @@ Returns the converted unsigned long long integer value:[u64]
 Returns the converted double-precision value:[f64]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_strtod")] @[abi] extern function strtod(ptr i8 s, ptr ptr i8 endptr) -> f64;
+@[vname("_strtod")] @[abi] extern function strtod(@[not_null] ptr i8 s, ptr ptr i8 endptr) -> f64;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function strtod(ptr i8 s, ptr ptr i8 endptr) -> f64;
+@[abi] extern function strtod(@[not_null] ptr i8 s, ptr ptr i8 endptr) -> f64;
 #endif
 
 :/ Converts a byte string to a single-precision floating-point value.
@@ -257,10 +257,10 @@ Returns the converted double-precision value:[f64]
 Returns the converted single-precision value:[f32]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_strtof")] @[abi] extern function strtof(ptr i8 s, ptr ptr i8 endptr) -> f32;
+@[vname("_strtof")] @[abi] extern function strtof(@[not_null] ptr i8 s, ptr ptr i8 endptr) -> f32;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function strtof(ptr i8 s, ptr ptr i8 endptr) -> f32;
+@[abi] extern function strtof(@[not_null] ptr i8 s, ptr ptr i8 endptr) -> f32;
 #endif
 
 :/ Converts a byte string to an extended floating-point value represented by this library.
@@ -270,10 +270,10 @@ Returns the converted single-precision value:[f32]
 Returns the converted extended floating-point value:[f64]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_strtold")] @[abi] extern function strtold(ptr i8 s, ptr ptr i8 endptr) -> f64;
+@[vname("_strtold")] @[abi] extern function strtold(@[not_null] ptr i8 s, ptr ptr i8 endptr) -> f64;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function strtold(ptr i8 s, ptr ptr i8 endptr) -> f64;
+@[abi] extern function strtold(@[not_null] ptr i8 s, ptr ptr i8 endptr) -> f64;
 #endif
 
 :/ Generates a pseudo-random integer.
@@ -384,10 +384,10 @@ Returns a pointer-form result containing the quotient and remainder as declared 
 Returns a pointer to the matching element, or a null pointer when not found:[ptr i0]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_bsearch")] @[abi] extern function bsearch(ptr i0 key, ptr i0 base, u64 count, u64 size, ptr i0 cmp) -> ptr i0;
+@[vname("_bsearch")] @[abi] extern function bsearch(@[not_null] ptr i0 key, @[not_null] ptr i0 base, u64 count, u64 size, @[not_null] ptr i0 cmp) -> ptr i0;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function bsearch(ptr i0 key, ptr i0 base, u64 count, u64 size, ptr i0 cmp) -> ptr i0;
+@[abi] extern function bsearch(@[not_null] ptr i0 key, @[not_null] ptr i0 base, u64 count, u64 size, @[not_null] ptr i0 cmp) -> ptr i0;
 #endif
 
 :/ Sorts an array using a caller-provided comparison function.
@@ -399,10 +399,10 @@ Returns a pointer to the matching element, or a null pointer when not found:[ptr
 Returns nothing:[i0]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_qsort")] @[abi] extern function qsort(ptr i0 base, u64 count, u64 size, ptr i0 cmp) -> i0;
+@[vname("_qsort")] @[abi] extern function qsort(@[not_null] ptr i0 base, u64 count, u64 size, @[not_null] ptr i0 cmp) -> i0;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function qsort(ptr i0 base, u64 count, u64 size, ptr i0 cmp) -> i0;
+@[abi] extern function qsort(@[not_null] ptr i0 base, u64 count, u64 size, @[not_null] ptr i0 cmp) -> i0;
 #endif
 
 #endif

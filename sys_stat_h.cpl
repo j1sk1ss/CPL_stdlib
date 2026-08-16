@@ -34,10 +34,10 @@
 Returns zero on success, otherwise -1:[i32]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_stat")] @[abi] extern function stat(ptr i8 path, ptr i0 stat_buf) -> i32;
+@[vname("_stat")] @[abi] extern function stat(@[not_null] ptr i8 path, @[not_null] ptr i0 stat_buf) -> i32;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function stat(ptr i8 path, ptr i0 stat_buf) -> i32;
+@[abi] extern function stat(@[not_null] ptr i8 path, @[not_null] ptr i0 stat_buf) -> i32;
 #endif
 
 :/ Retrieves metadata for an open file descriptor.
@@ -47,10 +47,10 @@ Returns zero on success, otherwise -1:[i32]
 Returns zero on success, otherwise -1:[i32]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_fstat")] @[abi] extern function fstat(i32 fd, ptr i0 stat_buf) -> i32;
+@[vname("_fstat")] @[abi] extern function fstat(i32 fd, @[not_null] ptr i0 stat_buf) -> i32;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function fstat(i32 fd, ptr i0 stat_buf) -> i32;
+@[abi] extern function fstat(i32 fd, @[not_null] ptr i0 stat_buf) -> i32;
 #endif
 
 :/ Retrieves metadata for a filesystem object without following its final symbolic link.
@@ -60,10 +60,10 @@ Returns zero on success, otherwise -1:[i32]
 Returns zero on success, otherwise -1:[i32]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_lstat")] @[abi] extern function lstat(ptr i8 path, ptr i0 stat_buf) -> i32;
+@[vname("_lstat")] @[abi] extern function lstat(@[not_null] ptr i8 path, @[not_null] ptr i0 stat_buf) -> i32;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function lstat(ptr i8 path, ptr i0 stat_buf) -> i32;
+@[abi] extern function lstat(@[not_null] ptr i8 path, @[not_null] ptr i0 stat_buf) -> i32;
 #endif
 
 :/ Changes the permission bits of a filesystem object.
@@ -73,10 +73,10 @@ Returns zero on success, otherwise -1:[i32]
 Returns zero on success, otherwise -1:[i32]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_chmod")] @[abi] extern function chmod(ptr i8 path, u32 mode) -> i32;
+@[vname("_chmod")] @[abi] extern function chmod(@[not_null] ptr i8 path, u32 mode) -> i32;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function chmod(ptr i8 path, u32 mode) -> i32;
+@[abi] extern function chmod(@[not_null] ptr i8 path, u32 mode) -> i32;
 #endif
 
 :/ Changes the permission bits of an open file.
@@ -99,10 +99,10 @@ Returns zero on success, otherwise -1:[i32]
 Returns zero on success, otherwise -1:[i32]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_mkdir")] @[abi] extern function mkdir(ptr i8 path, u32 mode) -> i32;
+@[vname("_mkdir")] @[abi] extern function mkdir(@[not_null] ptr i8 path, u32 mode) -> i32;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function mkdir(ptr i8 path, u32 mode) -> i32;
+@[abi] extern function mkdir(@[not_null] ptr i8 path, u32 mode) -> i32;
 #endif
 
 :/ Creates a named pipe.
@@ -112,10 +112,10 @@ Returns zero on success, otherwise -1:[i32]
 Returns zero on success, otherwise -1:[i32]
 /:
 #ifdef CCPL_MACHO64
-@[vname("_mkfifo")] @[abi] extern function mkfifo(ptr i8 path, u32 mode) -> i32;
+@[vname("_mkfifo")] @[abi] extern function mkfifo(@[not_null] ptr i8 path, u32 mode) -> i32;
 #endif
 #ifndef CCPL_MACHO64
-@[abi] extern function mkfifo(ptr i8 path, u32 mode) -> i32;
+@[abi] extern function mkfifo(@[not_null] ptr i8 path, u32 mode) -> i32;
 #endif
 
 :/ Sets the process file-creation mode mask.
