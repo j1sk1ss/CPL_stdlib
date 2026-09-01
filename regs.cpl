@@ -1,0 +1,132 @@
+#ifndef CPL_REGS_CPL_
+#define CPL_REGS_CPL_ 0
+
+#ifdef CCPL_GNUI386
+    #define CPL_REGS_INTERNAL_X86 1
+#endif
+
+#ifdef CCPL_MACHO64
+    #define CPL_REGS_INTERNAL_X86    1
+    #define CPL_REGS_INTERNAL_X86_64 1
+#endif
+
+#ifdef CCPL_GNU64
+    #define CPL_REGS_INTERNAL_X86    1
+    #define CPL_REGS_INTERNAL_X86_64 1
+#endif
+
+#ifdef CCPL_WINDOWS64
+    #define CPL_REGS_INTERNAL_X86    1
+    #define CPL_REGS_INTERNAL_X86_64 1
+#endif
+
+#ifdef CPL_REGS_INTERNAL_X86_64
+    #define RAX  0
+    #define RBX  1
+    #define RCX  2
+    #define RDX  3
+    #define RSI  4
+    #define RDI  5
+    #define RBP  6
+    #define RSP  7
+    #define R8   8
+    #define R9   9
+    #define R10  10
+    #define R11  11
+    #define R12  12
+    #define R13  13
+    #define R14  14
+    #define R15  15
+#endif
+
+#ifdef CPL_REGS_INTERNAL_X86
+    #define EAX  16
+    #define EBX  17
+    #define ECX  18
+    #define EDX  19
+    #define ESI  20
+    #define EDI  21
+    #define EBP  22
+    #define ESP  23
+#endif
+
+#ifdef CPL_REGS_INTERNAL_X86_64
+    #define R8D  24
+    #define R9D  25
+    #define R10D 26
+    #define R11D 27
+    #define R12D 28
+    #define R13D 29
+    #define R14D 30
+    #define R15D 31
+#endif
+
+#ifdef CPL_REGS_INTERNAL_X86
+    #define AX   32
+    #define BX   33
+    #define CX   34
+    #define DX   35
+    #define SI   36
+    #define DI   37
+    #define BP   38
+    #define SP   39
+#endif
+
+#ifdef CPL_REGS_INTERNAL_X86_64
+    #define R8W  40
+    #define R9W  41
+    #define R10W 42
+    #define R11W 43
+    #define R12W 44
+    #define R13W 45
+    #define R14W 46
+    #define R15W 47
+#endif
+
+#ifdef CPL_REGS_INTERNAL_X86
+    #define AL   48
+    #define BL   49
+    #define CL   50
+    #define DL   51
+#endif
+
+#ifdef CPL_REGS_INTERNAL_X86_64
+    #define SIL  52
+    #define DIL  53
+    #define BPL  54
+    #define SPL  55
+    #define R8B  56
+    #define R9B  57
+    #define R10B 58
+    #define R11B 59
+    #define R12B 60
+    #define R13B 61
+    #define R14B 62
+    #define R15B 63
+#endif
+
+#ifdef CPL_REGS_INTERNAL_X86
+    #define AH   64
+    #define BH   65
+    #define CH   66
+    #define DH   67
+
+    #define XMM0 68
+    #define XMM1 69
+    #define XMM2 70
+    #define XMM3 71
+    #define XMM4 72
+    #define XMM5 73
+    #define XMM6 74
+    #define XMM7 75
+#endif
+
+#ifdef CPL_REGS_INTERNAL_X86
+    #undef CPL_REGS_INTERNAL_X86
+#endif
+
+#ifdef CPL_REGS_INTERNAL_X86_64
+    #undef CPL_REGS_INTERNAL_X86_64
+#endif
+
+#endif
