@@ -1,0 +1,8 @@
+#include <test_h.cpl>
+
+glob function assert(bool cond, ptr i8 msg, i8 code = 1) -> i0 {
+    if cond; {
+        fprintf(stderr, msg);
+        exit code;
+    }
+}  

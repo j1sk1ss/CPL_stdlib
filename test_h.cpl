@@ -1,0 +1,16 @@
+#ifndef TEST_H_
+#define TEST_H_
+
+#include "stdbool_h.cpl"
+#include "stdio_h.cpl"
+
+:/ Assert condition and throw an error if condition is true (1).
+   Params:
+    - `cond` - Condition to assert.
+    - `msg` - Message of the error.
+    - `code` - Optional error code.
+/:
+@[abi]
+glob function assert(bool cond, ptr i8 msg, i8 code = 1) -> i0;
+
+#endif
