@@ -19,7 +19,7 @@ container std {
     Returns the number of characters written, or a negative value on failure:[i32]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function write(ptr i8 text) -> i32 {
         return printf(ref "%s", text);
     }
@@ -30,7 +30,7 @@ container std {
     Returns the number of characters written, or a negative value on failure:[i32]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function write(ptr string text) -> i32 {
         return printf(ref "%s", text.body);
     }
@@ -41,7 +41,7 @@ container std {
     Returns a non-negative value on success, otherwise a negative value:[i32]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function print(ptr i8 text) -> i32 {
         return puts(text);
     }
@@ -52,7 +52,7 @@ container std {
     Returns a non-negative value on success, otherwise a negative value:[i32]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function print(ptr string text) -> i32 {
         return puts(text.body);
     }
@@ -63,7 +63,7 @@ container std {
     Returns the number of characters written, or a negative value on failure:[i32]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function print(i32 value) -> i32 {
         return printf(ref "%d\n", value);
     }
@@ -74,7 +74,7 @@ container std {
     Returns the number of characters written, or a negative value on failure:[i32]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function print(i64 value) -> i32 {
         return printf(ref "%lld\n", value);
     }
@@ -85,7 +85,7 @@ container std {
     Returns the number of characters written, or a negative value on failure:[i32]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function print(u64 value) -> i32 {
         return printf(ref "%llu\n", value);
     }
@@ -96,7 +96,7 @@ container std {
     Returns the number of characters written, or a negative value on failure:[i32]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function print(f64 value) -> i32 {
         return printf(ref "%f\n", value);
     }
@@ -107,7 +107,7 @@ container std {
     Returns the written character on success, otherwise an end-of-file marker:[i32]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function putc(i8 value) -> i32 {
         return putchar(value as i32);
     }
@@ -117,7 +117,7 @@ container std {
     Returns the read character as an unsigned byte converted to i32, or EOF:[i32]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function getc() -> i32 {
         return getchar();
     }
@@ -128,7 +128,7 @@ container std {
     Returns the destination buffer on success, otherwise a null pointer:[ptr i8]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function gets(ptr i8 buffer) -> ptr i8 {
         return gets(buffer);
     }
@@ -140,7 +140,7 @@ container std {
     Returns the destination buffer on success, otherwise a null pointer:[ptr i8]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function gets(ptr i8 buffer, i32 size) -> ptr i8 {
         return fgets(buffer, size, stdin);
     }
@@ -152,7 +152,7 @@ container std {
     Returns a non-negative file descriptor on success, otherwise -1:[i32]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function open(ptr i8 path, i32 flags) -> i32 {
         return open(path, flags);
     }
@@ -165,7 +165,7 @@ container std {
     Returns a non-negative file descriptor on success, otherwise -1:[i32]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function open(ptr i8 path, i32 flags, i32 mode) -> i32 {
         return open(path, flags, mode);
     }
@@ -177,7 +177,7 @@ container std {
     Returns a non-negative file descriptor on success, otherwise -1:[i32]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function open(ptr string path, i32 flags) -> i32 {
         return open(path.body, flags);
     }
@@ -190,7 +190,7 @@ container std {
     Returns a non-negative file descriptor on success, otherwise -1:[i32]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function open(ptr string path, i32 flags, i32 mode) -> i32 {
         return open(path.body, flags, mode);
     }
@@ -202,7 +202,7 @@ container std {
     Returns a non-negative file descriptor on success, otherwise -1:[i32]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function create(ptr i8 path, i32 mode) -> i32 {
         return creat(path, mode);
     }
@@ -214,7 +214,7 @@ container std {
     Returns a non-negative file descriptor on success, otherwise -1:[i32]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function create(ptr string path, i32 mode) -> i32 {
         return creat(path.body, mode);
     }
@@ -227,7 +227,7 @@ container std {
     Returns the number of bytes read, zero at end of input, or a negative value on failure:[i64]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function read(i32 fd, ptr i0 buffer, u64 size) -> i64 {
         return read(fd, buffer, size);
     }
@@ -240,7 +240,7 @@ container std {
     Returns the number of bytes read, zero at end of input, or a negative value on failure:[i64]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function read<T>(i32 fd, ptr T buffer, u64 count) -> i64 {
         return read(fd, buffer as ptr i0, count * (sizeof(T) as u64));
     }
@@ -253,7 +253,7 @@ container std {
     Returns the number of bytes written, or a negative value on failure:[i64]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function write(i32 fd, ptr i0 buffer, u64 size) -> i64 {
         return write(fd, buffer, size);
     }
@@ -266,7 +266,7 @@ container std {
     Returns the number of bytes written, or a negative value on failure:[i64]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function write<T>(i32 fd, ptr T buffer, u64 count) -> i64 {
         return write(fd, buffer as ptr i0, count * (sizeof(T) as u64));
     }
@@ -279,7 +279,7 @@ container std {
     Returns the number of bytes read, zero at end of input, or a negative value on failure:[i32]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function fread(i32 fd, ptr u8 buffer, i32 size) -> i32 {
         return read(fd, buffer as ptr i0, size as u64) as i32;
     }
@@ -292,7 +292,7 @@ container std {
     Returns the number of bytes written, or a negative value on failure:[i32]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function fwrite(i32 fd, ptr u8 buffer, i32 size) -> i32 {
         return write(fd, buffer as ptr i0, size as u64) as i32;
     }
@@ -303,7 +303,7 @@ container std {
     Returns zero on success, otherwise -1:[i32]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function close(i32 fd) -> i32 {
         return close(fd);
     }
@@ -316,7 +316,7 @@ container std {
     Returns the resulting absolute position, or a negative value on failure:[i64]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function seek(i32 fd, i64 offset, i32 whence = SEEK_SET) -> i64 {
         return lseek(fd, offset, whence);
     }
@@ -327,7 +327,7 @@ container std {
     Returns the current absolute position, or a negative value on failure:[i64]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function tell(i32 fd) -> i64 {
         return lseek(fd, 0 as i64, SEEK_CUR as i32);
     }
@@ -338,7 +338,7 @@ container std {
     Returns zero on success, otherwise -1:[i32]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function flush(i32 fd) -> i32 {
         return fsync(fd);
     }
@@ -350,7 +350,7 @@ container std {
     Returns zero on success, otherwise -1:[i32]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function truncate(i32 fd, i64 length) -> i32 {
         return ftruncate(fd, length);
     }
@@ -361,7 +361,7 @@ container std {
     Returns true when the path is accessible, otherwise false:[bool]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function exists(ptr i8 path) -> bool {
         return (access(path, F_OK as i32) == 0) as bool;
     }
@@ -372,7 +372,7 @@ container std {
     Returns true when the path is accessible, otherwise false:[bool]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function exists(ptr string path) -> bool {
         return (access(path.body, F_OK as i32) == 0) as bool;
     }
@@ -383,7 +383,7 @@ container std {
     Returns zero on success, otherwise a nonzero value:[i32]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function remove(ptr i8 path) -> i32 {
         return remove(path);
     }
@@ -394,7 +394,7 @@ container std {
     Returns zero on success, otherwise a nonzero value:[i32]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function remove(ptr string path) -> i32 {
         return remove(path.body);
     }
@@ -406,7 +406,7 @@ container std {
     Returns zero on success, otherwise a nonzero value:[i32]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function rename(ptr i8 old_path, ptr i8 new_path) -> i32 {
         return rename(old_path, new_path);
     }
@@ -418,7 +418,7 @@ container std {
     Returns zero on success, otherwise a nonzero value:[i32]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function rename(ptr string old_path, ptr string new_path) -> i32 {
         return rename(old_path.body, new_path.body);
     }
@@ -430,7 +430,7 @@ container std {
     Returns a stream pointer on success, otherwise a null pointer:[ptr FILE]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function fopen(ptr i8 path, ptr i8 mode) -> ptr FILE {
         return fopen(path, mode);
     }
@@ -442,7 +442,7 @@ container std {
     Returns a stream pointer on success, otherwise a null pointer:[ptr FILE]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function fopen(ptr string path, ptr string mode) -> ptr FILE {
         return fopen(path.body, mode.body);
     }
@@ -453,7 +453,7 @@ container std {
     Returns zero on success, otherwise EOF:[i32]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function fclose(ptr FILE stream) -> i32 {
         return fclose(stream);
     }
@@ -467,8 +467,8 @@ container std {
     Returns the number of complete elements read:[u64]
     /:
     @[static]
-    @[inline(always)]
-    function fread(ptr FILE stream, ptr i0 buffer, u64 count, u64 element_size = 1) -> u64 {
+    @[inline(always)] @[abi]
+    function fread(ptr FILE stream, ptr i0 buffer, u64 count, u64 element_size = 1u64) -> u64 {
         return fread(buffer, element_size, count, stream);
     }
 
@@ -481,8 +481,8 @@ container std {
     Returns the number of complete elements written:[u64]
     /:
     @[static]
-    @[inline(always)]
-    function fwrite(ptr FILE stream, ptr i0 buffer, u64 count, u64 element_size = 1) -> u64 {
+    @[inline(always)] @[abi]
+    function fwrite(ptr FILE stream, ptr i0 buffer, u64 count, u64 element_size = 1u64) -> u64 {
         return fwrite(buffer, element_size, count, stream);
     }
 
@@ -494,7 +494,7 @@ container std {
     Returns the number of complete elements read:[u64]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function fread<T>(ptr FILE stream, ptr T buffer, u64 count) -> u64 {
         return fread(buffer as ptr i0, sizeof(T) as u64, count, stream);
     }
@@ -507,7 +507,7 @@ container std {
     Returns the number of complete elements written:[u64]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function fwrite<T>(ptr FILE stream, ptr T buffer, u64 count) -> u64 {
         return fwrite(buffer as ptr i0, sizeof(T) as u64, count, stream);
     }
@@ -518,7 +518,7 @@ container std {
     Returns zero on success, otherwise EOF:[i32]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function flush(ptr FILE stream) -> i32 {
         return fflush(stream);
     }
@@ -531,7 +531,7 @@ container std {
     Returns zero on success, otherwise a nonzero value:[i32]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function seek(ptr FILE stream, i64 offset, i32 whence = SEEK_SET) -> i32 {
         return fseek(stream, offset, whence);
     }
@@ -542,7 +542,7 @@ container std {
     Returns the current position, or a negative value on failure:[i64]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function tell(ptr FILE stream) -> i64 {
         return ftell(stream);
     }
@@ -553,7 +553,7 @@ container std {
     Returns a byte pointer to the allocation, or a null pointer on failure:[ptr i8]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function malloc(u64 size) -> ptr i8 {
         return malloc(size) as ptr i8;
     }
@@ -565,7 +565,7 @@ container std {
     Returns a pointer to the allocation, or a null pointer on failure:[ptr i0]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function calloc(u64 count, u64 size) -> ptr i0 {
         return calloc(count, size);
     }
@@ -576,8 +576,8 @@ container std {
     Returns a typed pointer to the allocation, or a null pointer on failure:[ptr T]
     /:
     @[static]
-    @[inline(always)]
-    function calloc<T>(u64 count = 1) -> ptr T {
+    @[inline(always)] @[abi]
+    function calloc<T>(u64 count = 1u64) -> ptr T {
         return calloc(count, sizeof(T) as u64) as ptr T;
     }
 
@@ -588,7 +588,7 @@ container std {
     Returns the resized allocation, or a null pointer on failure:[ptr i0]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function realloc(ptr i0 pointer, u64 size) -> ptr i0 {
         return realloc(pointer, size);
     }
@@ -600,7 +600,7 @@ container std {
     Returns the resized typed allocation, or a null pointer on failure:[ptr T]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function realloc<T>(ptr T pointer, u64 count) -> ptr T {
         return realloc(pointer as ptr i0, count * (sizeof(T) as u64)) as ptr T;
     }
@@ -611,7 +611,7 @@ container std {
     Returns nothing:[i0]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function free(ptr i8 pointer) -> i0 {
         free(pointer as ptr i0);
     }
@@ -622,7 +622,7 @@ container std {
     Returns nothing:[i0]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function free<T>(ptr T pointer) -> i0 {
         free(pointer as ptr i0);
     }
@@ -635,7 +635,7 @@ container std {
     Returns the destination pointer:[ptr T]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function copy<T>(ptr T destination, ptr T source, u64 count) -> ptr T {
         return memcpy(
             destination as ptr i0,
@@ -652,7 +652,7 @@ container std {
     Returns the destination pointer:[ptr T]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function move<T>(ptr T destination, ptr T source, u64 count) -> ptr T {
         return memmove(
             destination as ptr i0,
@@ -668,11 +668,11 @@ container std {
     Returns the destination pointer:[ptr T]
     /:
     @[static]
-    @[inline(always)]
-    function zero<T>(ptr T destination, u64 count = 1) -> ptr T {
+    @[inline(always)] @[abi]
+    function zero<T>(ptr T destination, u64 count = 1u64) -> ptr T {
         return memset(
             destination as ptr i0,
-            0,
+            0i32,
             count * (sizeof(T) as u64)
         ) as ptr T;
     }
@@ -683,7 +683,7 @@ container std {
     Returns the number of bytes before the terminating zero:[u64]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function strlen(ptr i8 text) -> u64 {
         return strlen(text);
     }
@@ -694,7 +694,7 @@ container std {
     Returns the number of bytes before the terminating zero:[u64]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function strlen(ptr string text) -> u64 {
         return strlen(text.body);
     }
@@ -706,7 +706,7 @@ container std {
     Returns a negative value, zero, or a positive value according to the comparison result:[i32]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function strcmp(ptr i8 left, ptr i8 right) -> i32 {
         return strcmp(left, right);
     }
@@ -718,7 +718,7 @@ container std {
     Returns a negative value, zero, or a positive value according to the comparison result:[i32]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function strcmp(ptr string left, ptr string right) -> i32 {
         return strcmp(left.body, right.body);
     }
@@ -729,7 +729,7 @@ container std {
     Returns the duplicated string, or a null pointer on failure:[ptr i8]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function strdup(ptr i8 text) -> ptr i8 {
         return strdup(text);
     }
@@ -740,7 +740,7 @@ container std {
     Returns the duplicated string, or a null pointer on failure:[ptr i8]
     /:
     @[static]
-    @[inline(always)]
+    @[inline(always)] @[abi]
     function strdup(ptr string text) -> ptr i8 {
         return strdup(text.body);
     }

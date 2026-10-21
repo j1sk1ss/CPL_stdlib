@@ -1,45 +1,45 @@
 #include "town_h.cpl"
 
-glob town __oregon_town_portland      = { "Portland",      635109 };
-glob town __oregon_town_eugene        = { "Eugene",        178618 };
-glob town __oregon_town_salem         = { "Salem",         181779 };
-glob town __oregon_town_gresham       = { "Gresham",       111513 };
-glob town __oregon_town_hillsboro     = { "Hillsboro",     111126 };
-glob town __oregon_town_bend          = { "Bend",          107342 };
-glob town __oregon_town_beaverton     = { "Beaverton",      97842 };
-glob town __oregon_town_medford       = { "Medford",        86494 };
-glob town __oregon_town_springfield   = { "Springfield",    61431 };
-glob town __oregon_town_corvallis     = { "Corvallis",      61499 };
-glob town __oregon_town_albany        = { "Albany",         56894 };
-glob town __oregon_town_tigard        = { "Tigard",         57929 };
-glob town __oregon_town_lake_oswego   = { "Lake Oswego",    39722 };
-glob town __oregon_town_keizer        = { "Keizer",         39140 };
-glob town __oregon_town_grants_pass   = { "Grants Pass",    39239 };
-glob town __oregon_town_oregon_city   = { "Oregon City",    38175 };
-glob town __oregon_town_mcminnville   = { "McMinnville",    34647 };
-glob town __oregon_town_redmond       = { "Redmond",        38547 };
-glob town __oregon_town_tualatin      = { "Tualatin",       28139 };
-glob town __oregon_town_west_linn     = { "West Linn",      26567 };
-glob town __oregon_town_wilsonville   = { "Wilsonville",    27833 };
-glob town __oregon_town_forest_grove  = { "Forest Grove",   27252 };
-glob town __oregon_town_woodburn      = { "Woodburn",       31948 };
-glob town __oregon_town_newberg       = { "Newberg",        26896 };
-glob town __oregon_town_happy_valley  = { "Happy Valley",   28916 };
-glob town __oregon_town_roseburg      = { "Roseburg",       23693 };
-glob town __oregon_town_klamath_falls = { "Klamath Falls",  22111 };
-glob town __oregon_town_ashland       = { "Ashland",        20889 };
-glob town __oregon_town_milwaukie     = { "Milwaukie",      22114 };
-glob town __oregon_town_sherwood      = { "Sherwood",       20535 };
-glob town __oregon_town_hermiston     = { "Hermiston",      19906 };
-glob town __oregon_town_central_point = { "Central Point",  19139 };
-glob town __oregon_town_lebanon       = { "Lebanon",        20267 };
-glob town __oregon_town_canby         = { "Canby",          18004 };
-glob town __oregon_town_pendleton     = { "Pendleton",      16989 };
-glob town __oregon_town_dallas        = { "Dallas",         17890 };
-glob town __oregon_town_troutdale     = { "Troutdale",      15776 };
-glob town __oregon_town_the_dalles    = { "The Dalles",     15745 };
-glob town __oregon_town_coos_bay      = { "Coos Bay",       15686 };
-glob town __oregon_town_st_helens     = { "St. Helens",     14450 };
+glob town __oregon_town_portland      = { ref "Portland",      635109 };
+glob town __oregon_town_eugene        = { ref "Eugene",        178618 };
+glob town __oregon_town_salem         = { ref "Salem",         181779 };
+glob town __oregon_town_gresham       = { ref "Gresham",       111513 };
+glob town __oregon_town_hillsboro     = { ref "Hillsboro",     111126 };
+glob town __oregon_town_bend          = { ref "Bend",          107342 };
+glob town __oregon_town_beaverton     = { ref "Beaverton",      97842 };
+glob town __oregon_town_medford       = { ref "Medford",        86494 };
+glob town __oregon_town_springfield   = { ref "Springfield",    61431 };
+glob town __oregon_town_corvallis     = { ref "Corvallis",      61499 };
+glob town __oregon_town_albany        = { ref "Albany",         56894 };
+glob town __oregon_town_tigard        = { ref "Tigard",         57929 };
+glob town __oregon_town_lake_oswego   = { ref "Lake Oswego",    39722 };
+glob town __oregon_town_keizer        = { ref "Keizer",         39140 };
+glob town __oregon_town_grants_pass   = { ref "Grants Pass",    39239 };
+glob town __oregon_town_oregon_city   = { ref "Oregon City",    38175 };
+glob town __oregon_town_mcminnville   = { ref "McMinnville",    34647 };
+glob town __oregon_town_redmond       = { ref "Redmond",        38547 };
+glob town __oregon_town_tualatin      = { ref "Tualatin",       28139 };
+glob town __oregon_town_west_linn     = { ref "West Linn",      26567 };
+glob town __oregon_town_wilsonville   = { ref "Wilsonville",    27833 };
+glob town __oregon_town_forest_grove  = { ref "Forest Grove",   27252 };
+glob town __oregon_town_woodburn      = { ref "Woodburn",       31948 };
+glob town __oregon_town_newberg       = { ref "Newberg",        26896 };
+glob town __oregon_town_happy_valley  = { ref "Happy Valley",   28916 };
+glob town __oregon_town_roseburg      = { ref "Roseburg",       23693 };
+glob town __oregon_town_klamath_falls = { ref "Klamath Falls",  22111 };
+glob town __oregon_town_ashland       = { ref "Ashland",        20889 };
+glob town __oregon_town_milwaukie     = { ref "Milwaukie",      22114 };
+glob town __oregon_town_sherwood      = { ref "Sherwood",       20535 };
+glob town __oregon_town_hermiston     = { ref "Hermiston",      19906 };
+glob town __oregon_town_central_point = { ref "Central Point",  19139 };
+glob town __oregon_town_lebanon       = { ref "Lebanon",        20267 };
+glob town __oregon_town_canby         = { ref "Canby",          18004 };
+glob town __oregon_town_pendleton     = { ref "Pendleton",      16989 };
+glob town __oregon_town_dallas        = { ref "Dallas",         17890 };
+glob town __oregon_town_troutdale     = { ref "Troutdale",      15776 };
+glob town __oregon_town_the_dalles    = { ref "The Dalles",     15745 };
+glob town __oregon_town_coos_bay      = { ref "Coos Bay",       15686 };
+glob town __oregon_town_st_helens     = { ref "St. Helens",     14450 };
 
 glob function town::find(ptr i8 name) -> ptr town {
     if not name; return 0 as ptr town;
@@ -94,4 +94,16 @@ glob function town::contains(ptr i8 name) -> bool {
 
 glob function town::count() -> u64 {
     OREGON_TOWN_COUNT as u64
+}
+
+@[test] @[abi]
+function count_equals_count() -> i0 {
+    assert(town::count() != OREGON_TOWN_COUNT, ref "count isn't correct!");
+}
+
+@[test] @[abi]
+function get_coos_bay() -> i0 {
+    ptr town coos_bay = town::find(ref "Coos Bay");
+    assert(not coos_bay, ref "Coos Bay isn't found!", 1);
+    assert(coos_bay.population != 15686u64, ref "Population is wrong!", 2);
 }

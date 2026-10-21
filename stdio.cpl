@@ -44,7 +44,7 @@ glob function file::temporary() -> ptr file {
 }
 
 glob function file::standard_input() -> ptr file {
-    i32 fd = dup(0);
+    i32 fd = dup(0i32);
     if fd < 0; return 0 as ptr file;
 
     ptr FILE body = fdopen(fd, ref "r");
@@ -61,7 +61,7 @@ glob function file::standard_input() -> ptr file {
 }
 
 glob function file::standard_output() -> ptr file {
-    i32 fd = dup(1);
+    i32 fd = dup(1i32);
     if fd < 0; return 0 as ptr file;
 
     ptr FILE body = fdopen(fd, ref "w");
@@ -78,7 +78,7 @@ glob function file::standard_output() -> ptr file {
 }
 
 glob function file::standard_error() -> ptr file {
-    i32 fd = dup(2);
+    i32 fd = dup(2i32);
     if fd < 0; return 0 as ptr file;
 
     ptr FILE body = fdopen(fd, ref "w");
@@ -111,7 +111,7 @@ glob function file::detach(ptr file self) -> ptr FILE {
 }
 
 glob function file::close(ptr file self) -> i32 {
-    if not self.body; return 0;
+    if not self.body; return 0i32;
 
     ptr FILE body = self.body;
     bool owned    = self.owned;
@@ -119,7 +119,7 @@ glob function file::close(ptr file self) -> i32 {
     self.body  = 0 as ptr FILE;
     self.owned = false;
 
-    if not owned; return 0;
+    if not owned; return 0i32;
     fclose(body)
 }
 
@@ -151,7 +151,7 @@ glob function file::read(ptr file self, ptr i0 buffer, u64 size) -> u64 {
         not self.body || 
         not buffer    || 
         not size; 
-    return 0;
+    return 0u64;
     fread(buffer, 1 as u64, size, self.body)
 }
 
@@ -160,7 +160,7 @@ glob function file::write(ptr file self, ptr i0 buffer, u64 size) -> u64 {
         not self.body || 
         not buffer    || 
         not size; 
-    return 0;
+    return 0u64;
     fwrite(buffer, 1 as u64, size, self.body)
 }
 
@@ -170,7 +170,7 @@ glob function file::read_items(ptr file self, ptr i0 buffer, u64 item_size, u64 
         not buffer    ||
         not item_size ||
         not count; 
-    return 0;
+    return 0u64;
     fread(buffer, item_size, count, self.body)
 }
 
@@ -180,7 +180,7 @@ glob function file::write_items(ptr file self, ptr i0 buffer, u64 item_size, u64
         not buffer    ||
         not item_size ||
         not count; 
-    return 0;
+    return 0u64;
     fwrite(buffer, item_size, count, self.body)
 }
 
@@ -212,12 +212,12 @@ glob function file::write_string(ptr file self, ptr i8 text) -> i32 {
 }
 
 glob function file::seek(ptr file self, i64 offset, i32 whence) -> i32 {
-    if not self.body; return -1;
+    if not self.body; return -1i32;
     fseek(self.body, offset, whence)
 }
 
 glob function file::tell(ptr file self) -> i64 {
-    if not self.body; return -1 as i64;
+    if not self.body; return -1i64;
     ftell(self.body)
 }
 
@@ -227,12 +227,12 @@ glob function file::rewind(ptr file self) -> i0 {
 }
 
 glob function file::size(ptr file self) -> i64 {
-    if not self.body; return -1 as i64;
+    if not self.body; return -1i64;
 
     i64 position = self.tell();
-    if position < 0; return -1 as i64;
+    if position < 0; return -1i64;
 
-    if self.seek(0 as i64, SEEK_END as i32) != 0; return -1 as i64;
+    if self.seek(0 as i64, SEEK_END as i32) != 0; return -1i64;
 
     i64 length = self.tell();
     self.seek(position, SEEK_SET as i32);
@@ -255,6 +255,6 @@ glob function file::error(ptr file self) -> bool {
 }
 
 glob function file::fd(ptr file self) -> i32 {
-    if not self.body; return -1;
+    if not self.body; return -1i32;
     fileno(self.body)
 }

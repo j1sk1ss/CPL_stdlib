@@ -1,6 +1,7 @@
 #ifndef CPL_TOWN_H_
 #define CPL_TOWN_H_ 0
 
+#include "test_h.cpl"
 #include "string_h.cpl"
 #include "stdbool_h.cpl"
 

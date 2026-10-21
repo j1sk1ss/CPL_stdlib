@@ -2,7 +2,6 @@
 #define CPL_SYS_STAT_H_ 0
 
 #include "platform_h.cpl"
-
 #include "sys_types_h.cpl"
 
 #define S_IFMT      61440
