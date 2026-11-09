@@ -1,0 +1,11 @@
+#ifndef FOR_H_
+#define FOR_H_
+
+:/ Separate for implementation in CPL. Actually - this is a syntax
+   sugar that is based on 'while' keyword.
+
+   Use it if you're lazy, or you don't want to use whiles (for some reason...)
+/:
+#define for(init, cond, step) { init; while cond; { __BODY__; step; } }
+
+#endif
